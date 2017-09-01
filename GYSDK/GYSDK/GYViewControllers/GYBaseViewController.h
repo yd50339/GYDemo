@@ -15,7 +15,6 @@
 #import "GYNetwork.h"
 #import "NSDictionary+Utils.h"
 #import "GYKeyChain.h"
-#import "GYEncrypto.h"
 @class GYActivityView;
 @interface GYBaseViewController : UIViewController
 

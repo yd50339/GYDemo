@@ -8,7 +8,8 @@
 
 #import "GYNetwork.h"
 #import "GYRequestApi.h"
-
+#import "GYKeyChain.h"
+#import "NSDictionary+Utils.h"
 @interface GYNetwork()
 
 @end
@@ -29,11 +30,18 @@
                 response:(ResponseHandle)res
 {
 
-    NSString * config = @"http://39.108.116.166:8888/GYTechnology/";
+    NSString * config = @"https://www.173steam.tv/GYTechnology/";
     NSString * urlStr  = [config stringByAppendingString:method];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = @"POST";
     NSMutableURLRequest * request = [reqApi requestWithMethod:httpMethod URLString:urlStr parameters:param error:nil];
+    
+    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
+    if ([loginDict stringForKey:@"token"].length > 0)
+    {
+        [request addValue:[loginDict stringForKey:@"token"] forHTTPHeaderField:@"token"];
+    }
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session dataTaskWithRequest:request
                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)

@@ -12,6 +12,7 @@
 @interface GYSDK : NSObject
 
 + (void)goToLogin;
++ (BOOL)isLogin;
 + (void)goToPay;
 
 + (BOOL)application:(UIApplication *)application
@@ -25,4 +26,5 @@
 
 
 + (void)registerSdk;
+
 @end

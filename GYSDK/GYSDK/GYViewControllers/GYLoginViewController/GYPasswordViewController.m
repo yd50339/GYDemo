@@ -103,8 +103,8 @@
         [GYRegular validatePassword:self.secondPsd.textField.text] &&
         [self.firstPsd.textField.text isEqualToString:self.secondPsd.textField.text])
     {
-        NSString * firstPassword = [GYEncrypto md5:self.firstPsd.textField.text];
-        NSString * secondPassword = [GYEncrypto md5:self.secondPsd.textField.text];
+        NSString * firstPassword = self.firstPsd.textField.text;
+        NSString * secondPassword = self.secondPsd.textField.text;
 
         [self.paramDict setObject:self.phoneNum forKey:@"cellphone"];
         [self.paramDict setObject:firstPassword forKey:@"password"];

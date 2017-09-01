@@ -9,6 +9,7 @@
 #import "GYLoginViewController.h"
 #import "GYRegisterViewController.h"
 #import "GYForgetViewController.h"
+#import "GYSDK.h"
 
 @interface GYLoginViewController ()
 <UITextFieldDelegate,
@@ -151,16 +152,15 @@ GYTextfieldViewDelegate>
 {
     [super viewDidLoad];
     
-    if ([self checkIsLogin])
+    
+    if ([GYSDK isLogin])
     {
-        NSMutableDictionary * loginDict =  [GYKeyChain getKeychainDataForKey:kGYKeyChainKey];
-//        NSString * user = [loginDict stringForKey:@"user"];
-//        NSString * password = [loginDict stringForKey:@"password"];
-//        NSString * token = [loginDict stringForKey:@"token"];
-//        [self requestLogin:@{@"username":user,@"password":password}];
-        
-        NSLog(@"userInfo===>%@",loginDict);
+        [self startLoading];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self stopLoading];
+        }];
     }
+    
     self.paramDict = [NSMutableDictionary dictionaryWithDictionary:@{@"username":@"",
                                                                      @"cellphone":@"",
                                                                      @"email":@"",
@@ -168,24 +168,6 @@ GYTextfieldViewDelegate>
 }
 
 #pragma mark - Login Request
-
-- (BOOL)checkIsLogin
-{
-    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
-    if ([loginDict stringForKey:@"token"])
-    {
-        NSLog(@"已经登录过");
-        return YES;
-    }
-    else
-    {
-        NSLog(@"未登录或者过期");
-        return NO;
-    }
-    
-    return NO;
-    
-}
 
 - (void)requestLogin:(NSDictionary *)dict
 {
@@ -246,7 +228,7 @@ GYTextfieldViewDelegate>
     {
         NSString * key = [GYRegular validateEmail:self.userTextView.textField.text] ? @"email" : @"cellphone";
         [self.paramDict setObject:self.userTextView.textField.text forKey:key];
-        NSString * password = [GYEncrypto md5:self.passwordTextView.textField.text];
+        NSString * password = self.passwordTextView.textField.text;
         [self.paramDict setObject:password forKey:@"password"];
         return YES;
     }

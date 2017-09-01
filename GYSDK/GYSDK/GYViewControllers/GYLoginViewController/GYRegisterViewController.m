@@ -81,7 +81,7 @@
     {
         [self.paramDict setObject:self.phoneTextView.textField.text forKey:@"cellphone"];
         [self.paramDict setObject:self.verifyCodeView.textField.text forKey:@"clientcode"];
-        NSString * password = [GYEncrypto md5:self.passwordTextView.textField.text];
+        NSString * password = self.passwordTextView.textField.text;
         [self.paramDict setObject:password forKey:@"password"];
         return YES;
     }

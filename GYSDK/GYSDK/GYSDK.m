@@ -33,6 +33,25 @@
  
 }
 
++ (BOOL)isLogin
+{
+    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
+    NSLog(@"%@",loginDict);
+
+    if ([loginDict stringForKey:@"token"].length > 0)
+    {
+        NSLog(@"已经登录过");
+        return YES;
+    }
+    else
+    {
+        NSLog(@"未登录或者过期");
+        return NO;
+    }
+    return NO;
+    
+}
+
 
 + (void)goToPay
 {
