@@ -8,12 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ResponseObj)(NSDictionary * resObj);
 
 @interface GYSDK : NSObject
 
-+ (void)goToLogin;
+//注册app
++ (void)registerApp;
+
+//登录状态
 + (BOOL)isLogin;
-+ (void)goToPay;
+
+//登录
++ (void)gyLogin;
+
+//登录  返回登录信息
++ (void)gyLogin:(ResponseObj)resObj;
+
+//支付
++ (void)gyPay;
 
 + (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -25,6 +37,5 @@
             options:(NSDictionary<NSString*, id> *)options;
 
 
-+ (void)registerSdk;
 
 @end

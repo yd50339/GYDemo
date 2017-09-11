@@ -11,13 +11,15 @@
 #import "GYForgetViewController.h"
 #import "GYSDK.h"
 
+
+
 @interface GYLoginViewController ()
 <UITextFieldDelegate,
 GYTextfieldViewDelegate>
 
 @property(nonatomic , strong)GYTextfieldView * userTextView;
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
-@property(nonatomic , strong)NSMutableDictionary * paramDict;
+@property(nonatomic , strong)GYUserModel * userModel;
 
 @end
 
@@ -161,38 +163,39 @@ GYTextfieldViewDelegate>
         }];
     }
     
-    self.paramDict = [NSMutableDictionary dictionaryWithDictionary:@{@"username":@"",
-                                                                     @"cellphone":@"",
-                                                                     @"email":@"",
-                                                                     @"password":@""}];
+    self.userModel = [[GYUserModel alloc]init];
 }
 
 #pragma mark - Login Request
 
-- (void)requestLogin:(NSDictionary *)dict
+- (void)requestLogin:(GYUserModel *)userModel
 {
     [self startLoading];
 
+    NSDictionary * dict = @{@"username":userModel.userName? : @"",
+                            @"cellphone":userModel.phone? : @"",
+                            @"email":userModel.email? : @"",
+                            @"password":userModel.password ? : @""};
+    
     __weak typeof(self) wself = self;
     [[GYNetwork network]requestwithParam:dict
                                         method:@"GY_Login"
-                                      response:^(NSDictionary *resObj)
+                                      response:^(NSDictionary * resObj)
      {
          if (resObj)
          {
              NSLog(@"登录：%@",resObj);
              dispatch_async(dispatch_get_main_queue(), ^{
                  NSString * status = [resObj stringForKey:@"status"];
-                 if ([status isEqualToString:@"0202"])
+                 if ([status isEqualToString:@"0200"])
                  {
                      NSMutableDictionary * loginDict = [NSMutableDictionary dictionary];
-                     loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
                      
-                     for (NSString * key in [self.paramDict allKeys])
+                     for (NSString * key in [dict allKeys])
                      {
-                         if ([self.paramDict stringForKey:key])
+                         if ([dict stringForKey:key])
                          {
-                             [loginDict setObject:[self.paramDict stringForKey:key] forKey:key];
+                             [loginDict setObject:[dict stringForKey:key] forKey:key];
                          }
                      }
                      
@@ -208,8 +211,8 @@ GYTextfieldViewDelegate>
                  }
                  [wself stopLoading];
              });
-
-
+            
+             wself.result(resObj);
          }
          
          
@@ -227,9 +230,17 @@ GYTextfieldViewDelegate>
         [GYRegular validatePassword:self.passwordTextView.textField.text])
     {
         NSString * key = [GYRegular validateEmail:self.userTextView.textField.text] ? @"email" : @"cellphone";
-        [self.paramDict setObject:self.userTextView.textField.text forKey:key];
+        if ([key isEqualToString:@"email"])
+        {
+            self.userModel.userName = self.userTextView.textField.text;
+
+        }
+        if ([key isEqualToString:@"cellphone"])
+        {
+            self.userModel.phone = self.userTextView.textField.text;
+        }
         NSString * password = self.passwordTextView.textField.text;
-        [self.paramDict setObject:password forKey:@"password"];
+        self.userModel.password = password;
         return YES;
     }
     else
@@ -246,7 +257,7 @@ GYTextfieldViewDelegate>
 {
     if ([self checkLogin])
     {
-        [self requestLogin:self.paramDict];
+        [self requestLogin:self.userModel];
 
     }
     

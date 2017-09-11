@@ -24,7 +24,7 @@
     ViewController * vc  = [[ViewController alloc]init];
     self.window.rootViewController = vc;
   
-    [GYSDK registerSdk];
+//    [GYSDK registerSdk];
     
     [self.window makeKeyAndVisible];
 

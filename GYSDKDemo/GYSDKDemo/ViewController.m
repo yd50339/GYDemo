@@ -47,13 +47,16 @@
 
 - (void)loginBtnOnClick
 {
-    [GYSDK goToLogin];
+    [GYSDK gyLogin:^(NSDictionary *result) {
+        NSLog(@"%@",result);
+        
+    }];
 
 }
 
 - (void)payBtnOnClick
 {
-    [GYSDK goToPay];
+    [GYSDK gyPay];
 
 }
 

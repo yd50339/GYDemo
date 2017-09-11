@@ -10,4 +10,7 @@
 #import "GYBaseViewController.h"
 @interface GYLoginViewController : GYBaseViewController
 
+typedef void(^Result)(NSDictionary * dict);
+@property(nonatomic , copy)Result result;
+
 @end

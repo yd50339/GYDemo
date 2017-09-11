@@ -30,7 +30,7 @@
                 response:(ResponseHandle)res
 {
 
-    NSString * config = @"https://www.173steam.tv/GYTechnology/";
+    NSString * config = @"http://192.168.0.149:8080/GYTechnology/";
     NSString * urlStr  = [config stringByAppendingString:method];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = @"POST";

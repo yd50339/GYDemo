@@ -38,7 +38,7 @@
     
     UIImage * bgImage = [GYImage imagesFromCustomBundle:@"gy_titleBg"];
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:bgImage]];
-    
+
 }
 
 - (void)startLoading

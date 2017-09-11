@@ -13,19 +13,24 @@
 #import "GYAlipay.h"
 #import "GYWXPay.h"
 
-@interface GYSDK()
-
-@end
 
 @implementation GYSDK
 
-+ (void)registerSdk
++ (void)registerApp
 {
     [GYWXPay wxRegister];
 }
 
 
-+ (void)goToLogin
++ (void)gyLogin:(ResponseObj)resObj
+{
+    GYLoginViewController * loginVc = [[GYLoginViewController alloc]init];
+    loginVc.result = resObj;
+    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVc];
+    [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
+}
+
++ (void)gyLogin
 {
     GYLoginViewController * loginVc = [[GYLoginViewController alloc]init];
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVc];
@@ -53,7 +58,7 @@
 }
 
 
-+ (void)goToPay
++ (void)gyPay
 {
     GYPayViewController * payVc = [[GYPayViewController alloc]init];
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:payVc];

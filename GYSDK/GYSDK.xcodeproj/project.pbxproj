@@ -22,6 +22,8 @@
 		7865CE8A1F3B0540002B114E /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7865CE881F3B0540002B114E /* NSDictionary+Utils.m */; };
 		7867FF421F32B39100DB38C6 /* GYImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7867FF401F32B39100DB38C6 /* GYImage.h */; };
 		7867FF431F32B39100DB38C6 /* GYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867FF411F32B39100DB38C6 /* GYImage.m */; };
+		787384F91F6286E30042DA00 /* GYUserModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 787384F71F6286E30042DA00 /* GYUserModel.h */; };
+		787384FA1F6286E30042DA00 /* GYUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 787384F81F6286E30042DA00 /* GYUserModel.m */; };
 		787EF53B1F53ECDC00072900 /* GYBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 787EF5311F53ECDC00072900 /* GYBaseViewController.h */; };
 		787EF53C1F53ECDC00072900 /* GYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 787EF5321F53ECDC00072900 /* GYBaseViewController.m */; };
 		787EF5681F53EDC600072900 /* GYForgetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 787EF5601F53EDC600072900 /* GYForgetViewController.h */; };
@@ -73,6 +75,8 @@
 		7865CE881F3B0540002B114E /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		7867FF401F32B39100DB38C6 /* GYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYImage.h; sourceTree = "<group>"; };
 		7867FF411F32B39100DB38C6 /* GYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYImage.m; sourceTree = "<group>"; };
+		787384F71F6286E30042DA00 /* GYUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYUserModel.h; sourceTree = "<group>"; };
+		787384F81F6286E30042DA00 /* GYUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYUserModel.m; sourceTree = "<group>"; };
 		787EF5311F53ECDC00072900 /* GYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYBaseViewController.h; sourceTree = "<group>"; };
 		787EF5321F53ECDC00072900 /* GYBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYBaseViewController.m; sourceTree = "<group>"; };
 		787EF5601F53EDC600072900 /* GYForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYForgetViewController.h; sourceTree = "<group>"; };
@@ -164,6 +168,15 @@
 			path = GYUitility;
 			sourceTree = "<group>";
 		};
+		787384F21F62866F0042DA00 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				787384F71F6286E30042DA00 /* GYUserModel.h */,
+				787384F81F6286E30042DA00 /* GYUserModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		787EF5301F53ECDC00072900 /* GYViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +191,7 @@
 		787EF55F1F53EDC600072900 /* GYLoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				787384F21F62866F0042DA00 /* model */,
 				787EF5701F53EDED00072900 /* Views */,
 				787EF5621F53EDC600072900 /* GYLoginViewController.h */,
 				787EF5631F53EDC600072900 /* GYLoginViewController.m */,
@@ -314,6 +328,7 @@
 				787EF5971F53F06200072900 /* GYPayViewController.h in Headers */,
 				7821D3841F42C538001D7505 /* GYKeyChain.h in Headers */,
 				78A3FDD01F2EFF4000B70A90 /* GYSDK.h in Headers */,
+				787384F91F6286E30042DA00 /* GYUserModel.h in Headers */,
 				787EF5791F53EDED00072900 /* GYTextfieldView.h in Headers */,
 				787EF58D1F53F06200072900 /* GYAlipay.h in Headers */,
 				787EF5951F53F06200072900 /* GYPayTableViewCell.h in Headers */,
@@ -406,6 +421,7 @@
 				787EF57C1F53EDED00072900 /* GYTipView.m in Sources */,
 				787EF5961F53F06200072900 /* GYPayTableViewCell.m in Sources */,
 				785AE9641F4C110D001B534D /* GYEncrypto.m in Sources */,
+				787384FA1F6286E30042DA00 /* GYUserModel.m in Sources */,
 				7865CE8A1F3B0540002B114E /* NSDictionary+Utils.m in Sources */,
 				787EF5921F53F06200072900 /* GYOrder.m in Sources */,
 				787EF5781F53EDED00072900 /* GYActivityView.m in Sources */,
