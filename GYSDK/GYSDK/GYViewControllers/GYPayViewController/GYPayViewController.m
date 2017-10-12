@@ -221,13 +221,15 @@ UITableViewDelegate>
 {
     NSLog(@"支付");
     
+    [self requestSign];
+    
     [GYAlipay doAlipayPay];
 //    [GYWXPay jumpToBizPay];
 }
 
 #pragma mark -  Register Request
 
-- (void)requestRegister
+- (void)requestSign
 {
     [[GYNetwork network]requestwithParam:@{}
                                         method:@""

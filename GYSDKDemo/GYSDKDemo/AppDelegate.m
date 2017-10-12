@@ -24,8 +24,7 @@
     ViewController * vc  = [[ViewController alloc]init];
     self.window.rootViewController = vc;
   
-//    [GYSDK registerSdk];
-    
+    [GYSDK registerApp];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -70,7 +69,6 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-
     return [GYSDK application:app openURL:url options:options];
 }
 
