@@ -11,7 +11,7 @@
 <GYTextfieldViewDelegate>
 @property(nonatomic , strong)GYTextfieldView * firstPsd;
 @property(nonatomic , strong)GYTextfieldView * secondPsd;
-@property(nonatomic , strong)NSMutableDictionary * paramDict;
+@property(nonatomic , strong)GYUserModel * userModel;
 
 @end
 
@@ -60,9 +60,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.paramDict = [NSMutableDictionary dictionaryWithDictionary:@{@"cellphone":@"",
-                                                                     @"password":@"",
-                                                                     @"newpasswd":@""}];
+    
+    self.userModel = [[GYUserModel alloc]init];
+    
 }
 
 
@@ -105,10 +105,11 @@
     {
         NSString * firstPassword = self.firstPsd.textField.text;
         NSString * secondPassword = self.secondPsd.textField.text;
+        
+        self.userModel.phone = self.phoneNum;
+        self.userModel.password = firstPassword;
+        self.userModel.secPassword = secondPassword;
 
-        [self.paramDict setObject:self.phoneNum forKey:@"cellphone"];
-        [self.paramDict setObject:firstPassword forKey:@"password"];
-        [self.paramDict setObject:secondPassword forKey:@"newpasswd"];
         return YES;
     }
     if (![GYRegular validatePassword:self.firstPsd.textField.text] ||
@@ -131,15 +132,18 @@
 {
     if ([self checkChangePsd])
     {
-       [self changePsdRequest:self.paramDict];
+       [self changePsdRequest:self.userModel];
     }
 }
 
 
 #pragma mark -  Register Request
 
-- (void)changePsdRequest:(NSDictionary *)param
+- (void)changePsdRequest:(GYUserModel *)userModel
 {
+    NSDictionary * param = @{@"cellphone":userModel.phone ? :@"",
+                             @"password": userModel.password ? :@"",
+                             @"newpasswd":userModel.secPassword ? :@""};
     __weak typeof (self)wself = self;
     [[GYNetwork network]requestwithParam:param
                                         method:@"GY_ForgetPasswordConfirm"

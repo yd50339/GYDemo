@@ -14,7 +14,7 @@
 @property(nonatomic , strong)GYTextfieldView * phoneTextView;
 @property(nonatomic , strong)GYTextfieldView * verifyCodeView;
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
-@property(nonatomic , strong)NSMutableDictionary * paramDict;
+@property(nonatomic , strong)GYUserModel * userModel;
 @end
 
 @implementation GYRegisterViewController
@@ -67,9 +67,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.paramDict = [NSMutableDictionary dictionaryWithDictionary:@{@"cellphone":@"",
-                                                                     @"clientcode":@"",
-                                                                     @"password":@""}];
+    
+    self.userModel = [[GYUserModel alloc]init];
+
 }
 
 - (BOOL)checkRegister
@@ -79,10 +79,10 @@
         [GYRegular validateVerifyCode:self.verifyCodeView.textField.text]&&
         [GYRegular validatePassword:self.passwordTextView.textField.text])
     {
-        [self.paramDict setObject:self.phoneTextView.textField.text forKey:@"cellphone"];
-        [self.paramDict setObject:self.verifyCodeView.textField.text forKey:@"clientcode"];
-        NSString * password = self.passwordTextView.textField.text;
-        [self.paramDict setObject:password forKey:@"password"];
+        self.userModel.phone = self.phoneTextView.textField.text;
+        self.userModel.clientcode = self.verifyCodeView.textField.text;
+        self.userModel.password = self.passwordTextView.textField.text;
+
         return YES;
     }
     
@@ -106,19 +106,23 @@
 {
     if ([self checkRegister])
     {
-        [self requestRegister:self.paramDict];        
+        [self requestRegister:self.userModel];
     }
 
 }
 
 #pragma mark -  Register Request
 
-- (void)requestRegister:(NSDictionary *)dict
+- (void)requestRegister:(GYUserModel *)userModel
 {
     
     [self startLoading];
+    
+    NSDictionary * parma = @{@"cellphone":userModel.phone ?  : @"",
+                             @"password":userModel.password ? : @"",
+                             @"clientcode":userModel.clientcode ? : @""};
     __weak typeof(self) wself = self;
-    [[GYNetwork network]requestwithParam:dict
+    [[GYNetwork network]requestwithParam:parma
                                         method:@"GY_Register"
                                       response:^(NSDictionary *resObj)
      {

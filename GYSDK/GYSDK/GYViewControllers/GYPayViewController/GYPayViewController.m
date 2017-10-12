@@ -177,6 +177,15 @@ UITableViewDelegate>
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSIndexPath * selIndex = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.payTableView selectRowAtIndexPath:selIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -246,11 +255,6 @@ UITableViewDelegate>
     
     [cell setcell:[self.dataArray objectAtIndex:indexPath.item]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    if (indexPath.item == 0)
-    {
-        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:1];
-    }
     return cell;
 }
 

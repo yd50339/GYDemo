@@ -14,6 +14,8 @@ GYTextfieldViewDelegate>
 @property(nonatomic ,strong)GYTextfieldView * accountTextView;
 @property(nonatomic ,strong)GYTextfieldView * verifyCodeView;
 @property(nonatomic , strong)NSMutableDictionary * paramDict;
+@property(nonatomic , strong)GYUserModel * userModel;
+
 @end
 
 @implementation GYForgetViewController
@@ -59,8 +61,8 @@ GYTextfieldViewDelegate>
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.paramDict = [NSMutableDictionary dictionaryWithDictionary:@{@"cellphone":@"",
-                                                                     @"clientcode":@""}];
+    
+    self.userModel = [[GYUserModel alloc]init];
 }
 
 - (BOOL)checkForget
@@ -69,8 +71,9 @@ GYTextfieldViewDelegate>
          ||[GYRegular validateEmail:self.accountTextView.textField.text]) &&
         [GYRegular validateVerifyCode:self.verifyCodeView.textField.text])
     {
-        [self.paramDict setObject:self.accountTextView.textField.text forKey:@"cellphone"];
-        [self.paramDict setObject:self.verifyCodeView.textField.text forKey:@"clientcode"];
+        self.userModel.phone = self.accountTextView.textField.text;
+        self.userModel.clientcode = self.verifyCodeView.textField.text;
+
         return YES;
     }
 
@@ -94,16 +97,19 @@ GYTextfieldViewDelegate>
 {
     if ([self checkForget])
     {
-       [self forgetRequest:self.paramDict];
+       [self forgetRequest:self.userModel];
     }
     
 }
 
 #pragma mark -  Register Request
 
-- (void)forgetRequest:(NSDictionary *)param
+- (void)forgetRequest:(GYUserModel *)userModel
 {
     __weak typeof (self) wself = self;
+    
+    NSDictionary * param = @{@"cellphone":userModel.phone ? :@"",
+                             @"clientcode":userModel.clientcode? :@""};
     [[GYNetwork network]requestwithParam:param
                                         method:@"GY_ForgetPassword"
                                       response:^(NSDictionary *resObj)

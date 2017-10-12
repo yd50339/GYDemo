@@ -14,6 +14,7 @@
 @property(nonatomic , copy)NSString *  phone;
 @property(nonatomic , copy)NSString *  email;
 @property(nonatomic , copy)NSString *  password;
+@property(nonatomic , copy)NSString *  secPassword;
 @property(nonatomic , copy)NSString *  clientcode;
 
 @end

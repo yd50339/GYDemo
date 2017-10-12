@@ -14,7 +14,8 @@
     NSString * imgStr = [NSString stringWithFormat:@"%@.png",imgName];
     NSBundle * myBundle =[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"GYSDK" ofType:@"bundle"]];
     NSString * imgPath = [[myBundle resourcePath] stringByAppendingPathComponent:imgStr];
-    return [UIImage imageWithContentsOfFile:imgPath];
+    UIImage * image = [UIImage imageWithContentsOfFile:imgPath];
+    return image;
 }
 
 @end
