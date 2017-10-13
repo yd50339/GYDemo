@@ -173,14 +173,20 @@ GYTextfieldViewDelegate>
     [self startLoading];
 
     NSDictionary * dict = @{@"username":userModel.userName? : @"",
-                            @"cellphone":userModel.phone? : @"",
-                            @"email":userModel.email? : @"",
-                            @"password":userModel.password ? : @""};
+//                            @"cellphone":userModel.phone? : @"",
+//                            @"email":userModel.email? : @"",
+                            @"password":userModel.password ? : @"",
+                            @"games":@[@{@"gamename":@"1",
+                                         @"gamepackage":@"111",
+                                         @"remark":@"zheshi"
+                                         }],
+                            @"type":@"3"};
     
     __weak typeof(self) wself = self;
     [[GYNetwork network]requestwithParam:dict
-                                        method:@"GY_Login"
-                                      response:^(NSDictionary * resObj)
+                                    path:@"user/login"
+                                  method:@"POST"
+                                response:^(NSDictionary * resObj)
      {
          if (resObj)
          {
@@ -229,16 +235,17 @@ GYTextfieldViewDelegate>
         [GYRegular validateMobile:self.userTextView.textField.text]) &&
         [GYRegular validatePassword:self.passwordTextView.textField.text])
     {
-        NSString * key = [GYRegular validateEmail:self.userTextView.textField.text] ? @"email" : @"cellphone";
-        if ([key isEqualToString:@"email"])
-        {
-            self.userModel.userName = self.userTextView.textField.text;
-
-        }
-        if ([key isEqualToString:@"cellphone"])
-        {
-            self.userModel.phone = self.userTextView.textField.text;
-        }
+//        NSString * key = [GYRegular validateEmail:self.userTextView.textField.text] ? @"email" : @"cellphone";
+//        if ([key isEqualToString:@"email"])
+//        {
+//            self.userModel.userName = self.userTextView.textField.text;
+//
+//        }
+//        if ([key isEqualToString:@"cellphone"])
+//        {
+//            self.userModel.phone = self.userTextView.textField.text;
+//        }
+        self.userModel.userName = self.userTextView.textField.text;
         NSString * password = self.passwordTextView.textField.text;
         self.userModel.password = password;
         return YES;

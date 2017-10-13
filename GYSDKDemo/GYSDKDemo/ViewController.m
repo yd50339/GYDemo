@@ -56,7 +56,7 @@
 
 - (void)payBtnOnClick
 {
-    [GYSDK gyPay];
+//    [GYSDK gyPay];
 
 }
 

@@ -118,12 +118,15 @@
     
     [self startLoading];
     
-    NSDictionary * parma = @{@"cellphone":userModel.phone ?  : @"",
+    NSDictionary * parma = @{@"username":userModel.phone ?  : @"",
                              @"password":userModel.password ? : @"",
-                             @"clientcode":userModel.clientcode ? : @""};
+                             @"valicode":userModel.clientcode ? : @"",
+                             @"type":@"1"
+                             };
     __weak typeof(self) wself = self;
     [[GYNetwork network]requestwithParam:parma
-                                        method:@"GY_Register"
+                                    path:@"user/register"
+                                        method:@"POST"
                                       response:^(NSDictionary *resObj)
      {
          NSLog(@"注册：%@",resObj);

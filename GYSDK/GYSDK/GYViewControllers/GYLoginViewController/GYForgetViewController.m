@@ -108,11 +108,12 @@ GYTextfieldViewDelegate>
 {
     __weak typeof (self) wself = self;
     
-    NSDictionary * param = @{@"cellphone":userModel.phone ? :@"",
-                             @"clientcode":userModel.clientcode? :@""};
+    NSDictionary * param = @{@"mobile":userModel.phone ? :@"",
+                             @"valicode":userModel.clientcode? :@""};
     [[GYNetwork network]requestwithParam:param
-                                        method:@"GY_ForgetPassword"
-                                      response:^(NSDictionary *resObj)
+                                    path:@"user/forgetpassone"
+                                    method:@"PUT"
+                                  response:^(NSDictionary *resObj)
      {
          NSLog(@"忘记密码：%@",resObj);
          dispatch_async(dispatch_get_main_queue(), ^{

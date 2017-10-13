@@ -15,6 +15,7 @@ typedef void(^ResponseHandle)(NSDictionary * resObj);
 + (GYNetwork *)network;
 
 - (void)requestwithParam:(NSDictionary *)param
+                    path:(NSString *)path
                   method:(NSString *)method
                 response:(ResponseHandle)res;
 

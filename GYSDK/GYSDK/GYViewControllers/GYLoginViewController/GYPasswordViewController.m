@@ -141,13 +141,14 @@
 
 - (void)changePsdRequest:(GYUserModel *)userModel
 {
-    NSDictionary * param = @{@"cellphone":userModel.phone ? :@"",
+    NSDictionary * param = @{@"mobile":userModel.phone ? :@"",
                              @"password": userModel.password ? :@"",
-                             @"newpasswd":userModel.secPassword ? :@""};
+                             @"confirmpass":userModel.secPassword ? :@""};
     __weak typeof (self)wself = self;
     [[GYNetwork network]requestwithParam:param
-                                        method:@"GY_ForgetPasswordConfirm"
-                                      response:^(NSDictionary *resObj)
+                                    path:@"user/forgetpasstwo"
+                                  method:@"PUT"
+                                response:^(NSDictionary *resObj)
      {
          NSLog(@"修改密码：%@",resObj);
          dispatch_async(dispatch_get_main_queue(), ^{

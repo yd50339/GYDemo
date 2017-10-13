@@ -159,7 +159,7 @@ NSArray * QueryStringPairsFromDictionary(NSDictionary* dictionary)
     else
     {
         NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-        [mutableRequest setValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
+        [mutableRequest setValue:[NSString stringWithFormat:@"application/json; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
         [mutableRequest setHTTPBody:[query dataUsingEncoding:NSUTF8StringEncoding]];
     }
     

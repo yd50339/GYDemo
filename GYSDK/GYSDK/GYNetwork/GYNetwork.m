@@ -26,14 +26,15 @@
 
 
 - (void)requestwithParam:(NSDictionary *)param
+                    path:(NSString *)path
                   method:(NSString *)method
                 response:(ResponseHandle)res
 {
 
-    NSString * config = @"http://192.168.0.149:8080/GYTechnology/";
-    NSString * urlStr  = [config stringByAppendingString:method];
+    NSString * config = @"http://192.168.0.166:8080/GYForeign/";
+    NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
-    NSString * httpMethod = @"POST";
+    NSString * httpMethod = method;
     NSMutableURLRequest * request = [reqApi requestWithMethod:httpMethod URLString:urlStr parameters:param error:nil];
     
     NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
@@ -41,7 +42,8 @@
     {
         [request addValue:[loginDict stringForKey:@"token"] forHTTPHeaderField:@"token"];
     }
-    
+    [request addValue:@"111231231313123" forHTTPHeaderField:@"token"];
+
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session dataTaskWithRequest:request
                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)

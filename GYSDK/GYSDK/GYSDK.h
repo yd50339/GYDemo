@@ -25,7 +25,7 @@ typedef void(^ResponseObj)(NSDictionary * resObj);
 + (void)gyLogin:(ResponseObj)resObj;
 
 //支付
-+ (void)gyPay;
++ (void)gyPay:(NSString *)amount  product:(NSString *)productInfo;
 
 + (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url

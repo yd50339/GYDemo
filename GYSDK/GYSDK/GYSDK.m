@@ -58,7 +58,7 @@
 }
 
 
-+ (void)gyPay
++ (void)gyPay:(NSString *)amount  product:(NSString *)productInfo
 {
     GYPayViewController * payVc = [[GYPayViewController alloc]init];
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:payVc];

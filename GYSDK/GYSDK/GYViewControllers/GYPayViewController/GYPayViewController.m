@@ -231,12 +231,12 @@ UITableViewDelegate>
 
 - (void)requestSign
 {
-    [[GYNetwork network]requestwithParam:@{}
-                                        method:@""
-                                      response:^(NSDictionary *resObj)
-     {
-         NSLog(@"%@",resObj);
-     }];
+//    [[GYNetwork network]requestwithParam:@{}
+//                                        method:@""
+//                                      response:^(NSDictionary *resObj)
+//     {
+//         NSLog(@"%@",resObj);
+//     }];
 }
 
 #pragma mark - Delegate DataSource
