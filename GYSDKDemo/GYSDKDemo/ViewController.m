@@ -31,7 +31,6 @@
     [self.view addSubview:loginBtn];
     
     
-    
     UIButton * payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     payBtn.frame = CGRectMake(CGRectGetMinX(loginBtn.frame), CGRectGetMaxY(loginBtn.frame), 100, 50);
     [payBtn addTarget:self action:@selector(payBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -41,23 +40,43 @@
     payBtn.layer.borderColor = [UIColor blackColor].CGColor;
     payBtn.layer.borderWidth = 1;
     [self.view addSubview:payBtn];
+    
+    
+    UIButton * logOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    logOutBtn.frame = CGRectMake(CGRectGetMinX(payBtn.frame), CGRectGetMaxY(payBtn.frame) + 0.9, 100, 50);
+    [logOutBtn addTarget:self action:@selector(logOutBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    [logOutBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [logOutBtn setTitle:@"注销" forState:UIControlStateNormal];
+    logOutBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    logOutBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    logOutBtn.layer.borderWidth = 1;
+    [self.view addSubview:logOutBtn];
 
     
 }
 
 - (void)loginBtnOnClick
 {
-    [GYSDK gyLogin:^(NSDictionary *result) {
-        NSLog(@"%@",result);
-        
-    }];
-
+    if (![GYSDK isLogin])
+    {
+        [GYSDK gyLogin:^(NSDictionary *result)
+        {
+            NSLog(@"%@",result);
+        }];
+    }
+   
 }
 
 - (void)payBtnOnClick
 {
-//    [GYSDK gyPay];
+    [GYSDK gyPay:@{@"name":@"juzi",
+                   @"price":@"0.01"}];
 
+}
+
+- (void)logOutBtnOnClick
+{
+    [GYSDK logout];
 }
 
 

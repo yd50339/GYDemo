@@ -153,16 +153,6 @@ GYTextfieldViewDelegate>
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    if ([GYSDK isLogin])
-    {
-        [self startLoading];
-        [self dismissViewControllerAnimated:YES completion:^{
-            [self stopLoading];
-        }];
-    }
-    
     self.userModel = [[GYUserModel alloc]init];
 }
 
@@ -173,14 +163,12 @@ GYTextfieldViewDelegate>
     [self startLoading];
 
     NSDictionary * dict = @{@"username":userModel.userName? : @"",
-//                            @"cellphone":userModel.phone? : @"",
-//                            @"email":userModel.email? : @"",
                             @"password":userModel.password ? : @"",
                             @"games":@[@{@"gamename":@"1",
                                          @"gamepackage":@"111",
                                          @"remark":@"zheshi"
                                          }],
-                            @"type":@"3"};
+                            @"type":@"1"};
     
     __weak typeof(self) wself = self;
     [[GYNetwork network]requestwithParam:dict
@@ -196,18 +184,13 @@ GYTextfieldViewDelegate>
                  if ([status isEqualToString:@"0200"])
                  {
                      NSMutableDictionary * loginDict = [NSMutableDictionary dictionary];
-                     
-                     for (NSString * key in [dict allKeys])
-                     {
-                         if ([dict stringForKey:key])
-                         {
-                             [loginDict setObject:[dict stringForKey:key] forKey:key];
-                         }
-                     }
-                     
                       NSString * token = [resObj stringForKey:@"token"];
                      [loginDict setObject:token forKey:@"token"];
-                     [GYKeyChain addKeychainData:loginDict forKey:kGYKeyChainKey];
+                     NSString * userId = [resObj stringForKey:@"userid"];
+                     [loginDict setObject:userId forKey:@"userId"];
+//                     [GYKeyChain addKeychainData:token forKey:kGYKeyChainKey];
+                     [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:kGYKeyChainKey];
+                     [[NSUserDefaults standardUserDefaults] synchronize];
                      
                      [wself dismissViewControllerAnimated:YES completion:nil];
                  }
@@ -217,8 +200,10 @@ GYTextfieldViewDelegate>
                  }
                  [wself stopLoading];
              });
-            
-             wself.result(resObj);
+             if (wself.result)
+             {
+                wself.result(resObj);
+             }
          }
          
          

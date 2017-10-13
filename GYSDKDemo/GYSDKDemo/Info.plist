@@ -25,7 +25,7 @@
 			<string>alipay</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>alisdkdemo</string>
+				<string>gangyu</string>
 			</array>
 		</dict>
 		<dict>

@@ -31,7 +31,7 @@
                 response:(ResponseHandle)res
 {
 
-    NSString * config = @"http://192.168.0.166:8080/GYForeign/";
+    NSString * config = @"http://192.168.0.130:8080/GYForeign/";
     NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = method;
@@ -42,8 +42,6 @@
     {
         [request addValue:[loginDict stringForKey:@"token"] forHTTPHeaderField:@"token"];
     }
-    [request addValue:@"111231231313123" forHTTPHeaderField:@"token"];
-
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session dataTaskWithRequest:request
                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)

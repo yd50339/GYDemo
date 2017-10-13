@@ -13,19 +13,19 @@ typedef void(^ResponseObj)(NSDictionary * resObj);
 @interface GYSDK : NSObject
 
 //注册app
-+ (void)registerApp;
++ (void)registerApp:(NSString *)gameId;
 
 //登录状态
 + (BOOL)isLogin;
 
-//登录
-+ (void)gyLogin;
-
 //登录  返回登录信息
 + (void)gyLogin:(ResponseObj)resObj;
 
+//登出
++ (void)logout;
+
 //支付
-+ (void)gyPay:(NSString *)amount  product:(NSString *)productInfo;
++ (void)gyPay:(NSDictionary *)productInfo;
 
 + (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url

@@ -30,7 +30,7 @@ NSString * const kGYKeyChainKey = @"com.gy.keychain";
     //在删除之前先删除旧数据
     SecItemDelete((CFDictionaryRef)keychainQuery);
     //添加新的数据到字典
-    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:(id)kSecValueData];
+    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:key];
     //将数据字典添加到钥匙串
     SecItemAdd((CFDictionaryRef)keychainQuery, NULL);
 }

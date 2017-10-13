@@ -10,6 +10,7 @@
 #import "GYPayTableViewCell.h"
 #import "GYAlipay.h"
 #import "GYWXPay.h"
+#import "GYProduct.h"
 
 @interface GYPayViewController ()
 <UITableViewDataSource,
@@ -19,6 +20,8 @@ UITableViewDelegate>
 @property(nonatomic , strong)UILabel * nameLabel;
 @property(nonatomic , strong)UITableView * payTableView;
 @property(nonatomic , strong)UIImageView * closeImageView;
+@property(nonatomic , strong)UILabel * prizeLabel;
+@property(nonatomic , strong)UILabel * totalLabel;
 @end
 
 @implementation GYPayViewController
@@ -46,12 +49,12 @@ UITableViewDelegate>
     prizeRect.size.height = 40;
     prizeRect.origin.y = CGRectGetMinY(zfbLabel.frame);
     prizeRect.origin.x = CGRectGetWidth(topView.frame) - CGRectGetWidth(prizeRect) - 15;
-    UILabel * prizeLabel = [[UILabel alloc]initWithFrame:prizeRect];
-    prizeLabel.text = @"¥1000";
-    prizeLabel.font =  [UIFont fontWithName:@"HiraginoSansGB-W3" size:17.f];
-    prizeLabel.textAlignment = NSTextAlignmentRight;
-    prizeLabel.textColor = [UIColor colorWithRed:255/255.0 green:39/255.0 blue:66/255.0 alpha:1];
-    [topView addSubview:prizeLabel];
+    self.prizeLabel = [[UILabel alloc]initWithFrame:prizeRect];
+    self.prizeLabel.text = @"¥0";
+    self.prizeLabel.font =  [UIFont fontWithName:@"HiraginoSansGB-W3" size:17.f];
+    self.prizeLabel.textAlignment = NSTextAlignmentRight;
+    self.prizeLabel.textColor = [UIColor colorWithRed:255/255.0 green:39/255.0 blue:66/255.0 alpha:1];
+    [topView addSubview:self.prizeLabel];
     
     CGRect headRect = CGRectZero;
     headRect.size.height = 43;
@@ -124,7 +127,7 @@ UITableViewDelegate>
     
     
     NSMutableAttributedString * totalString = [[NSMutableAttributedString alloc]initWithString:@"总计: "];
-    NSMutableAttributedString * prizeString = [[NSMutableAttributedString alloc]initWithString:@"¥10000"
+    NSMutableAttributedString * prizeString = [[NSMutableAttributedString alloc]initWithString:@"¥0"
                                                                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor colorWithRed:255/255.0 green:39/255.0 blue:66/255.0 alpha:1]}];
      [totalString appendAttributedString:prizeString];
     
@@ -133,9 +136,9 @@ UITableViewDelegate>
     totalRect.size.height = 40;
     totalRect.origin.x = 15;
     totalRect.origin.y = (CGRectGetHeight(bottomView.frame) - CGRectGetHeight(totalRect)) * 0.5;
-    UILabel * totalLabel = [[UILabel alloc]initWithFrame:totalRect];
-    totalLabel.attributedText = totalString;
-    [bottomView addSubview:totalLabel];
+    self.totalLabel = [[UILabel alloc]initWithFrame:totalRect];
+    self.totalLabel.attributedText = totalString;
+    [bottomView addSubview:self.totalLabel];
     
 
     CGRect payBtnRect = CGRectZero;
@@ -191,6 +194,16 @@ UITableViewDelegate>
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    NSString * price = [self.productInfo stringForKey:@"price"];
+    self.prizeLabel.text = [NSString stringWithFormat:@"¥%@",price];
+    
+    
+    NSMutableAttributedString * totalString = [[NSMutableAttributedString alloc]initWithString:@"总计: "];
+    NSMutableAttributedString * prizeString = [[NSMutableAttributedString alloc]initWithString:self.prizeLabel.text
+                                                                                    attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor colorWithRed:255/255.0 green:39/255.0 blue:66/255.0 alpha:1]}];
+    [totalString appendAttributedString:prizeString];
+    self.totalLabel.attributedText = totalString;
+    
     self.dataArray = @[@{@"type":@"支付宝",
                          @"icon":@"gy_zfb"},
                        @{@"type":@"微信",
@@ -219,24 +232,55 @@ UITableViewDelegate>
 
 - (void)payButtonOnClick
 {
-    NSLog(@"支付");
-    
-    [self requestSign];
-    
-    [GYAlipay doAlipayPay];
-//    [GYWXPay jumpToBizPay];
+    [self requestCreateOrder];
 }
 
 #pragma mark -  Register Request
 
-- (void)requestSign
+- (void)requestCreateOrder
 {
-//    [[GYNetwork network]requestwithParam:@{}
-//                                        method:@""
-//                                      response:^(NSDictionary *resObj)
-//     {
-//         NSLog(@"%@",resObj);
-//     }];
+    GYProduct * product = [[GYProduct alloc]init];
+    product.name = [self.productInfo stringForKey:@"name"];
+    product.price = [self.productInfo stringForKey:@"price"];
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
+    NSString * userId = [dict stringForKey:@"userId"];
+    NSDictionary * param = @{@"user":@{@"userid":userId},
+                             @"games":@{@"gameid":@"1"},
+                             @"ordergoods":@[@{@"orderid":@"",
+                                               @"number":@"",
+                                               @"name":product.name,
+                                               @"price":product.price}],
+                             @"payment":product.price};
+    
+    [[GYNetwork network]requestwithParam:param
+                                        path:@"order/create"
+                                      method:@"POST"
+                                    response:^(NSDictionary *resObj)
+         {
+             NSLog(@"%@",resObj);
+             
+             
+             [self requestSign:[resObj stringForKey:@"orderid"]];
+
+         }];
+    
+}
+
+
+- (void)requestSign:(NSString *)orderId
+{
+     NSString * price = [self.productInfo stringForKey:@"price"];
+    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@"",
+                                           @"total_amount":price,
+                                           @"subject":@""}
+                                    path:@"alipay/pay"
+                                        method:@"POST"
+                                      response:^(NSDictionary *resObj)
+     {
+         NSLog(@"%@",resObj);
+         [GYAlipay doAlipayPay:[resObj stringForKey:@"paydata"]];
+     }];
 }
 
 #pragma mark - Delegate DataSource

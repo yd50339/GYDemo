@@ -16,7 +16,7 @@
 
 @implementation GYSDK
 
-+ (void)registerApp
++ (void)registerApp:(NSString *)gameId
 {
     [GYWXPay wxRegister];
 }
@@ -30,17 +30,16 @@
     [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
 }
 
-+ (void)gyLogin
++ (void)logout
 {
-    GYLoginViewController * loginVc = [[GYLoginViewController alloc]init];
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVc];
-    [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
- 
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kGYKeyChainKey];
 }
 
 + (BOOL)isLogin
 {
-    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
+//    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
+    
+    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
     NSLog(@"%@",loginDict);
 
     if ([loginDict stringForKey:@"token"].length > 0)
@@ -58,11 +57,21 @@
 }
 
 
-+ (void)gyPay:(NSString *)amount  product:(NSString *)productInfo
++ (void)gyPay:(NSDictionary *)productInfo;
 {
-    GYPayViewController * payVc = [[GYPayViewController alloc]init];
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:payVc];
-    [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
+    if ([GYSDK isLogin])
+    {
+        GYPayViewController * payVc = [[GYPayViewController alloc]init];
+        payVc.productInfo = productInfo;
+        UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:payVc];
+        [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
+    }
+    else
+    {
+        [GYSDK gyLogin:^(NSDictionary *resObj) {
+            
+        }];
+    }
     
 }
 

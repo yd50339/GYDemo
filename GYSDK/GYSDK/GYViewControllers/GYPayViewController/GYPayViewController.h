@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GYBaseViewController.h"
 @interface GYPayViewController : GYBaseViewController
+@property(nonatomic , strong)NSDictionary * productInfo;
 
 @end

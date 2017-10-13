@@ -52,6 +52,8 @@
 		787EF5961F53F06200072900 /* GYPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 787EF58A1F53F06200072900 /* GYPayTableViewCell.m */; };
 		787EF5971F53F06200072900 /* GYPayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 787EF58B1F53F06200072900 /* GYPayViewController.h */; };
 		787EF5981F53F06200072900 /* GYPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 787EF58C1F53F06200072900 /* GYPayViewController.m */; };
+		7882D6561F90A96C00B21A42 /* GYProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 7882D6541F90A96C00B21A42 /* GYProduct.h */; };
+		7882D6571F90A96C00B21A42 /* GYProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 7882D6551F90A96C00B21A42 /* GYProduct.m */; };
 		78A3FDD01F2EFF4000B70A90 /* GYSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 78A3FDCE1F2EFF4000B70A90 /* GYSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78A3FDE41F2F107F00B70A90 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78A3FDDF1F2F107F00B70A90 /* README.txt */; };
 		78A3FDEB1F2F12E200B70A90 /* GYSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A3FDEA1F2F12E200B70A90 /* GYSDK.m */; };
@@ -105,6 +107,8 @@
 		787EF58A1F53F06200072900 /* GYPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYPayTableViewCell.m; sourceTree = "<group>"; };
 		787EF58B1F53F06200072900 /* GYPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYPayViewController.h; sourceTree = "<group>"; };
 		787EF58C1F53F06200072900 /* GYPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYPayViewController.m; sourceTree = "<group>"; };
+		7882D6541F90A96C00B21A42 /* GYProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GYProduct.h; sourceTree = "<group>"; };
+		7882D6551F90A96C00B21A42 /* GYProduct.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GYProduct.m; sourceTree = "<group>"; };
 		78A3FDCB1F2EFF4000B70A90 /* GYSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GYSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A3FDCE1F2EFF4000B70A90 /* GYSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GYSDK.h; sourceTree = "<group>"; };
 		78A3FDCF1F2EFF4000B70A90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				787EF5881F53F06200072900 /* GYPayTableViewCell */,
 				787EF58B1F53F06200072900 /* GYPayViewController.h */,
 				787EF58C1F53F06200072900 /* GYPayViewController.m */,
+				7882D6541F90A96C00B21A42 /* GYProduct.h */,
+				7882D6551F90A96C00B21A42 /* GYProduct.m */,
 			);
 			path = GYPayViewController;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 				787EF58D1F53F06200072900 /* GYAlipay.h in Headers */,
 				787EF5951F53F06200072900 /* GYPayTableViewCell.h in Headers */,
 				787EF56A1F53EDC600072900 /* GYLoginViewController.h in Headers */,
+				7882D6561F90A96C00B21A42 /* GYProduct.h in Headers */,
 				787EF56C1F53EDC600072900 /* GYPasswordViewController.h in Headers */,
 				7865CE7B1F3AF0D5002B114E /* GYRegular.h in Headers */,
 				787EF5681F53EDC600072900 /* GYForgetViewController.h in Headers */,
@@ -441,6 +448,7 @@
 				787EF57A1F53EDED00072900 /* GYTextfieldView.m in Sources */,
 				787EF53C1F53ECDC00072900 /* GYBaseViewController.m in Sources */,
 				7821D3851F42C538001D7505 /* GYKeyChain.m in Sources */,
+				7882D6571F90A96C00B21A42 /* GYProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +572,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "";
-				DEAD_CODE_STRIPPING = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -598,7 +606,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "";
-				DEAD_CODE_STRIPPING = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
