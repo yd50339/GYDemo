@@ -43,7 +43,7 @@
     
     
     UIButton * logOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    logOutBtn.frame = CGRectMake(CGRectGetMinX(payBtn.frame), CGRectGetMaxY(payBtn.frame) + 0.9, 100, 50);
+    logOutBtn.frame = CGRectMake(CGRectGetMinX(payBtn.frame), CGRectGetMaxY(payBtn.frame), 100, 50);
     [logOutBtn addTarget:self action:@selector(logOutBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
     [logOutBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [logOutBtn setTitle:@"注销" forState:UIControlStateNormal];

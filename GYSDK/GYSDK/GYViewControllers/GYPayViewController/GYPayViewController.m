@@ -22,6 +22,9 @@ UITableViewDelegate>
 @property(nonatomic , strong)UIImageView * closeImageView;
 @property(nonatomic , strong)UILabel * prizeLabel;
 @property(nonatomic , strong)UILabel * totalLabel;
+@property(nonatomic , strong)UILabel * timeLabel;
+@property(nonatomic , strong)NSTimer * timer;
+@property(nonatomic , assign)long  secondsCountDown;
 @end
 
 @implementation GYPayViewController
@@ -172,12 +175,12 @@ UITableViewDelegate>
     CGRect timeLabRect = payLabRect;
     timeLabRect.origin.x = CGRectGetMaxX(timeImageView.frame) + 5;
     timeLabRect.size.width = 50;
-    UILabel * timeLabel = [[UILabel alloc]initWithFrame:timeLabRect];
-    timeLabel.text = @"30:00";
-    timeLabel.textColor = [UIColor whiteColor];
-    timeLabel.font = [UIFont systemFontOfSize:18];
-    [bottomView addSubview:timeLabel];
-
+    self.timeLabel = [[UILabel alloc]initWithFrame:timeLabRect];
+    self.timeLabel.text = @"30:00";
+    self.timeLabel.textColor = [UIColor whiteColor];
+    self.timeLabel.font = [UIFont systemFontOfSize:18];
+    [bottomView addSubview:self.timeLabel];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -187,6 +190,13 @@ UITableViewDelegate>
     NSIndexPath * selIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.payTableView selectRowAtIndexPath:selIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)viewDidLoad
@@ -209,6 +219,33 @@ UITableViewDelegate>
                        @{@"type":@"微信",
                          @"icon":@"gy_weixin"}];
     self.storeArray = [NSMutableArray arrayWithArray:self.dataArray];
+    self.secondsCountDown = 60 * 30;
+    [self countTime];
+
+}
+
+//倒计时30分钟
+- (void)countTime
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(countDownAction)
+                                                userInfo:nil repeats:YES];
+    [self.timer fire];
+}
+
+-(void)countDownAction
+{
+    self.secondsCountDown -- ;
+    NSString * minute = [NSString stringWithFormat:@"%02ld",(self.secondsCountDown % 3600)/60];
+    NSString * second = [NSString stringWithFormat:@"%02ld",self.secondsCountDown % 60];
+    NSString * formatTime = [NSString stringWithFormat:@"%@:%@",minute,second];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",formatTime];
+    if(self.secondsCountDown == 0)
+    {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 #pragma mark - ButtonOnClick
@@ -246,10 +283,10 @@ UITableViewDelegate>
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
     NSString * userId = [dict stringForKey:@"userId"];
     NSDictionary * param = @{@"user":@{@"userid":userId},
-                             @"games":@{@"gameid":@"1"},
+                             @"games":@{@"gameid":@"39"},
                              @"ordergoods":@[@{@"orderid":@"",
                                                @"number":@"",
-                                               @"name":product.name,
+                                               @"title":product.name,
                                                @"price":product.price}],
                              @"payment":product.price};
     
@@ -271,9 +308,7 @@ UITableViewDelegate>
 - (void)requestSign:(NSString *)orderId
 {
      NSString * price = [self.productInfo stringForKey:@"price"];
-    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@"",
-                                           @"total_amount":price,
-                                           @"subject":@""}
+    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@""}
                                     path:@"alipay/pay"
                                         method:@"POST"
                                       response:^(NSDictionary *resObj)
@@ -306,9 +341,7 @@ UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     self.nameLabel.text = self.dataArray[indexPath.item][@"type"];
-
 }
 
 

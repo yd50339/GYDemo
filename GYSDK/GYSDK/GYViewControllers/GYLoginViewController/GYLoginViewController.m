@@ -154,6 +154,44 @@ GYTextfieldViewDelegate>
 {
     [super viewDidLoad];
     self.userModel = [[GYUserModel alloc]init];
+    
+    //注册键盘弹出通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    //注册键盘隐藏通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)keyboardWillShow:(NSNotification *)note
+{
+    NSDictionary *info = [note userInfo];
+//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    //目标视图UITextField
+    int y =  210;
+    if(y > 0)
+    {
+        self.view.frame = CGRectMake(0, -y, self.view.frame.size.width, self.view.frame.size.height);
+    }
+}
+
+//键盘隐藏后将视图恢复到原始状态
+-(void)keyboardWillHide:(NSNotification *)note
+{
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeView" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
 }
 
 #pragma mark - Login Request

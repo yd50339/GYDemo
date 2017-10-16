@@ -17,7 +17,8 @@
     //应用注册scheme,在AliSDKDemo-Info.plist定义URL types
     NSString *appScheme = @"gangyu";
     // NOTE: 调用支付结果开始支付
-    [[AlipaySDK defaultService] payOrder:payDataStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+    [[AlipaySDK defaultService] payOrder:payDataStr fromScheme:appScheme callback:^(NSDictionary *resultDic)
+    {
         NSLog(@"reslut = %@",resultDic);
     }];
     

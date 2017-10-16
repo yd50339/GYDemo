@@ -169,8 +169,21 @@
 
 - (void)sendVerificationCode :(GYTextfieldView *)view
 {
+    if (![GYRegular validateMobile:self.phoneTextView.textField.text])
+    {
+        [[[GYTipView alloc]initWithMsg:@"手机号不正确"] showAnimation];
+        return;
+    }
+    NSString * path = [NSString stringWithFormat:@"getDomesticCode/send?phone=%@",self.phoneTextView.textField.text];
 
-
+    [[GYNetwork network]requestwithParam:@{}
+                                    path:path
+                                  method:@"GET"
+                                response:^(NSDictionary *resObj)
+     {
+         NSLog(@"%@",resObj);
+     }];
+    
 }
 
 

@@ -31,13 +31,13 @@
                 response:(ResponseHandle)res
 {
 
-    NSString * config = @"http://192.168.0.130:8080/GYForeign/";
+    NSString * config = @"http://192.168.0.115:8080/GYForeign/";
     NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = method;
     NSMutableURLRequest * request = [reqApi requestWithMethod:httpMethod URLString:urlStr parameters:param error:nil];
     
-    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
+    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
     if ([loginDict stringForKey:@"token"].length > 0)
     {
         [request addValue:[loginDict stringForKey:@"token"] forHTTPHeaderField:@"token"];
