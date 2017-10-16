@@ -61,8 +61,8 @@
     messageRect.origin.x = CGRectGetMaxX(cleanRect) + 30;
     messageRect.origin.y = CGRectGetMidY(rect) - CGRectGetHeight(messageRect) * 0.5 - 5;
     UIButton * messageBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [messageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
-    [messageBtn setTitleColor:color forState:UIControlStateNormal];
+//    [messageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
+//    [messageBtn setTitleColor:color forState:UIControlStateNormal];
     [messageBtn addTarget:self action:@selector(messageBtnOnClick) forControlEvents:UIControlEventTouchDown];
     messageBtn.layer.borderWidth = 1;
     messageBtn.layer.cornerRadius = CGRectGetHeight(rect) * 0.7;
@@ -70,6 +70,13 @@
     messageBtn.layer.borderColor = color.CGColor;
     [self addSubview:messageBtn];
 
+    
+    self.coutTimeLabel = [[UILabel alloc]initWithFrame:messageRect];
+    self.coutTimeLabel.text = @"发送验证码";
+    self.coutTimeLabel.textColor = color;
+    self.coutTimeLabel.font = [UIFont systemFontOfSize:15];
+    self.coutTimeLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.coutTimeLabel];
 }
 
 - (void)messageBtnOnClick

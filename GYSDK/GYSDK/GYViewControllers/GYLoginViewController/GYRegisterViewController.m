@@ -15,6 +15,8 @@
 @property(nonatomic , strong)GYTextfieldView * verifyCodeView;
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
 @property(nonatomic , strong)GYUserModel * userModel;
+@property(nonatomic , strong)NSTimer * timer;
+@property(nonatomic , assign)long secondsCountDown;
 @end
 
 @implementation GYRegisterViewController
@@ -174,6 +176,8 @@
         [[[GYTipView alloc]initWithMsg:@"手机号不正确"] showAnimation];
         return;
     }
+    
+    [self countTime];
     NSString * path = [NSString stringWithFormat:@"getDomesticCode/send?phone=%@",self.phoneTextView.textField.text];
 
     [[GYNetwork network]requestwithParam:@{}
@@ -184,6 +188,31 @@
          NSLog(@"%@",resObj);
      }];
     
+}
+
+//倒计时30分钟
+- (void)countTime
+{
+    self.secondsCountDown = 60;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(countDownAction)
+                                                userInfo:nil repeats:YES];
+    [self.timer fire];
+}
+
+-(void)countDownAction
+{
+    self.secondsCountDown -- ;
+    NSString * minute = [NSString stringWithFormat:@"%02ld",(self.secondsCountDown % 3600)/60];
+    NSString * second = [NSString stringWithFormat:@"%02ld",self.secondsCountDown % 60];
+    NSString * formatTime = [NSString stringWithFormat:@"%@:%@",minute,second];
+//    self.timeLabel.text = [NSString stringWithFormat:@"%@",formatTime];
+    if(self.secondsCountDown == 0)
+    {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 

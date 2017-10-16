@@ -308,7 +308,9 @@ UITableViewDelegate>
 - (void)requestSign:(NSString *)orderId
 {
      NSString * price = [self.productInfo stringForKey:@"price"];
-    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@""}
+    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@"",
+                                           @"total_amount":price,
+                                           @"subject":@""}
                                     path:@"alipay/pay"
                                         method:@"POST"
                                       response:^(NSDictionary *resObj)

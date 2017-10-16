@@ -35,4 +35,6 @@
 
 @property(nonatomic , strong)UITextField * textField;
 
+@property(nonatomic , strong)UILabel * coutTimeLabel;
+
 @end

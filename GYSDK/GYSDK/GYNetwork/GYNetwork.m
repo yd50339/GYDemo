@@ -31,7 +31,7 @@
                 response:(ResponseHandle)res
 {
 
-    NSString * config = @"http://192.168.0.115:8080/GYForeign/";
+    NSString * config = @"http://192.168.0.115:8080/GYDomestic/";
     NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = method;
