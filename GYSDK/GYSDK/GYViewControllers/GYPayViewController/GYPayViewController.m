@@ -25,6 +25,7 @@ UITableViewDelegate>
 @property(nonatomic , strong)UILabel * timeLabel;
 @property(nonatomic , strong)NSTimer * timer;
 @property(nonatomic , assign)long  secondsCountDown;
+@property(nonatomic , strong)UIButton * payButton;
 @end
 
 @implementation GYPayViewController
@@ -149,12 +150,12 @@ UITableViewDelegate>
     payBtnRect.size.height = 39;
     payBtnRect.origin.x = CGRectGetWidth(bottomView.frame) - CGRectGetWidth(payBtnRect) - 15;
     payBtnRect.origin.y = (CGRectGetHeight(bottomView.frame) - CGRectGetHeight(payBtnRect)) * 0.5;
-    UIButton * payButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    payButton.frame = payBtnRect;
-    payButton.layer.cornerRadius = CGRectGetHeight(payButton.frame) * 0.2;
-    [payButton addTarget:self action:@selector(payButtonOnClick) forControlEvents:UIControlEventTouchUpInside];
-    payButton.backgroundColor = [UIColor redColor];
-    [bottomView addSubview:payButton];
+    self.payButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.payButton.frame = payBtnRect;
+    self.payButton.layer.cornerRadius = CGRectGetHeight(self.payButton.frame) * 0.2;
+    [self.payButton addTarget:self action:@selector(payButtonOnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.payButton.backgroundColor = [UIColor redColor];
+    [bottomView addSubview:self.payButton];
     
     
     CGRect payLabRect = payBtnRect;
@@ -269,6 +270,7 @@ UITableViewDelegate>
 
 - (void)payButtonOnClick
 {
+    self.payButton.userInteractionEnabled = NO;
     [self requestCreateOrder];
 }
 
@@ -283,7 +285,7 @@ UITableViewDelegate>
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
     NSString * userId = [dict stringForKey:@"userId"];
     NSDictionary * param = @{@"user":@{@"userid":userId},
-                             @"games":@{@"gameid":@"39"},
+                             @"games":@{@"gameid":@"1"},
                              @"ordergoods":@[@{@"orderid":@"",
                                                @"number":@"",
                                                @"title":product.name,
@@ -315,8 +317,22 @@ UITableViewDelegate>
                                         method:@"POST"
                                       response:^(NSDictionary *resObj)
      {
-         NSLog(@"%@",resObj);
-         [GYAlipay doAlipayPay:[resObj stringForKey:@"paydata"]];
+         [GYAlipay doAlipayPay:[resObj stringForKey:@"paydata"] response:^(NSDictionary *resObj)
+         {
+             
+             NSString * status = [resObj stringForKey:@"resultStatus"];
+             //6001 中途取消
+             if ([status isEqualToString:@"6001"])
+             {
+                 self.payButton.userInteractionEnabled = YES;
+             }
+             //9000 支付成功
+             if ([status isEqualToString:@"9000"])
+             {
+                 [self dismissViewControllerAnimated:YES completion:nil];
+             }
+ 
+         }];
      }];
 }
 

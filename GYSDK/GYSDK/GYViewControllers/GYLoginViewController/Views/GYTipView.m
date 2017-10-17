@@ -62,7 +62,7 @@
     [UIView animateWithDuration:1 animations:^{
         self.alpha = 1;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:2 animations:^{
+        [UIView animateWithDuration:1.5 animations:^{
             self.alpha = 0;
         } completion:^(BOOL finished) {
             if (completion)

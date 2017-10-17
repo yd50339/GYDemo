@@ -12,13 +12,17 @@
 @implementation GYAlipay
 
 
-+ (void)doAlipayPay:(NSString *)payDataStr
++ (void)doAlipayPay:(NSString *)payDataStr  response:(ResObj)resObj;
 {
     //应用注册scheme,在AliSDKDemo-Info.plist定义URL types
     NSString *appScheme = @"gangyu";
     // NOTE: 调用支付结果开始支付
     [[AlipaySDK defaultService] payOrder:payDataStr fromScheme:appScheme callback:^(NSDictionary *resultDic)
     {
+        if (resObj)
+        {
+            resObj(resultDic);
+        }
         NSLog(@"reslut = %@",resultDic);
     }];
     

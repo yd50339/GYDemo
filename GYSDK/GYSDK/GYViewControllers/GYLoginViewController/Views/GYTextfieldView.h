@@ -29,12 +29,15 @@
 
 @property(nonatomic , assign)BOOL isMessage;
 
-- (void)setPlaceholder:(NSString *)placeholder imageNamed:(NSString *)imgString;
-
 @property(nonatomic , assign)id<GYTextfieldViewDelegate>delegate;
 
 @property(nonatomic , strong)UITextField * textField;
 
 @property(nonatomic , strong)UILabel * coutTimeLabel;
+
+- (void)setPlaceholder:(NSString *)placeholder imageNamed:(NSString *)imgString;
+
+- (void)countTime;
+
 
 @end

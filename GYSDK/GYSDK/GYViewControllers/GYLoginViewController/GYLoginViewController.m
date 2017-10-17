@@ -174,7 +174,7 @@ GYTextfieldViewDelegate>
 
 -(void)keyboardWillShow:(NSNotification *)note
 {
-    NSDictionary *info = [note userInfo];
+//    NSDictionary *info = [note userInfo];
 //    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     //目标视图UITextField
     int y =  210;

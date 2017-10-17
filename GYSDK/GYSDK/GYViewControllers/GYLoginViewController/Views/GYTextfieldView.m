@@ -13,6 +13,9 @@
 @property(nonatomic , strong)UIButton * cleanBtn;
 @property(nonatomic , copy)NSString * placeholder;
 @property(nonatomic , copy)NSString * titleImageStr;
+@property(nonatomic , strong)NSTimer * timer;
+@property(nonatomic , assign)long secondsCountDown;
+@property(nonatomic , strong)UIButton * messageBtn;
 @end
 
 @implementation GYTextfieldView
@@ -60,15 +63,15 @@
     messageRect.size.height = 40;
     messageRect.origin.x = CGRectGetMaxX(cleanRect) + 30;
     messageRect.origin.y = CGRectGetMidY(rect) - CGRectGetHeight(messageRect) * 0.5 - 5;
-    UIButton * messageBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.messageBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [messageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
 //    [messageBtn setTitleColor:color forState:UIControlStateNormal];
-    [messageBtn addTarget:self action:@selector(messageBtnOnClick) forControlEvents:UIControlEventTouchDown];
-    messageBtn.layer.borderWidth = 1;
-    messageBtn.layer.cornerRadius = CGRectGetHeight(rect) * 0.7;
-    messageBtn.frame = messageRect;
-    messageBtn.layer.borderColor = color.CGColor;
-    [self addSubview:messageBtn];
+    [self.messageBtn addTarget:self action:@selector(messageBtnOnClick:) forControlEvents:UIControlEventTouchDown];
+    self.messageBtn.layer.borderWidth = 1;
+    self.messageBtn.layer.cornerRadius = CGRectGetHeight(rect) * 0.7;
+    self.messageBtn.frame = messageRect;
+    self.messageBtn.layer.borderColor = color.CGColor;
+    [self addSubview:self.messageBtn];
 
     
     self.coutTimeLabel = [[UILabel alloc]initWithFrame:messageRect];
@@ -79,11 +82,47 @@
     [self addSubview:self.coutTimeLabel];
 }
 
-- (void)messageBtnOnClick
+- (void)messageBtnOnClick:(UIButton *)sender
 {
     if ([self.delegate respondsToSelector:@selector(sendVerificationCode:)])
     {
         [self.delegate sendVerificationCode:self];
+    }
+}
+
+
+//倒计时60s
+- (void)countTime
+{
+    self.messageBtn.userInteractionEnabled = NO;
+    self.secondsCountDown = 60;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(countDownAction)
+                                                userInfo:nil repeats:YES];
+    [self.timer fire];
+}
+
+-(void)countDownAction
+{
+    self.secondsCountDown -- ;
+    NSString * second = [NSString stringWithFormat:@"%ld",self.secondsCountDown % 60];
+    NSString * formatTime = [NSString stringWithFormat:@"%@",second];
+    NSString * time = [NSString stringWithFormat:@"%@秒后重试",formatTime];
+    UIColor * color = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1];
+    self.coutTimeLabel.textColor = color;
+    self.messageBtn.layer.borderColor = color.CGColor;
+
+    self.coutTimeLabel.text = time;
+    if(self.secondsCountDown == 0)
+    {
+        UIColor * resetColor = [UIColor colorWithRed:47/255.0 green:82/255.0 blue:212/255.0 alpha:1];
+        self.messageBtn.layer.borderColor = resetColor.CGColor;
+        self.coutTimeLabel.textColor = resetColor;
+        self.coutTimeLabel.text = @"发送验证码";
+        self.messageBtn.userInteractionEnabled = YES;
+        [self.timer invalidate];
+        self.timer = nil;
     }
 }
 

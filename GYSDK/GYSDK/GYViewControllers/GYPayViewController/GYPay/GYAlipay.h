@@ -10,7 +10,9 @@
 @import UIKit;
 @interface GYAlipay : NSObject
 
-+ (void)doAlipayPay:(NSString *)payDataStr;
+typedef void(^ResObj)(NSDictionary * resObj);
+
++ (void)doAlipayPay:(NSString *)payDataStr  response:(ResObj)resObj;
 
 + (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
