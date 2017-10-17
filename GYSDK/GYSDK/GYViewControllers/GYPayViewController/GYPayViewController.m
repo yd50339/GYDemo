@@ -321,15 +321,15 @@ UITableViewDelegate>
          {
              
              NSString * status = [resObj stringForKey:@"resultStatus"];
-             //6001 中途取消
-             if ([status isEqualToString:@"6001"])
-             {
-                 self.payButton.userInteractionEnabled = YES;
-             }
              //9000 支付成功
              if ([status isEqualToString:@"9000"])
              {
                  [self dismissViewControllerAnimated:YES completion:nil];
+             }
+             else
+             {
+                 //6001 中途取消
+                 self.payButton.userInteractionEnabled = YES;
              }
  
          }];
