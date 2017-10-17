@@ -50,7 +50,7 @@
 {
     
     CGRect rect = self.textField.frame;
-    rect.size.width =  120;
+    rect.size.width =  100;
     self.textField.frame = rect;
 
     CGRect cleanRect = self.cleanBtn.frame;
@@ -61,7 +61,7 @@
     CGRect messageRect = CGRectZero;
     messageRect.size.width = 100;
     messageRect.size.height = 40;
-    messageRect.origin.x = CGRectGetMaxX(cleanRect) + 30;
+    messageRect.origin.x = (CGRectGetWidth(self.frame) - CGRectGetWidth(messageRect) - CGRectGetMinX(self.cleanBtn.frame)) * 0.5 + CGRectGetMinX(self.cleanBtn.frame);
     messageRect.origin.y = CGRectGetMidY(rect) - CGRectGetHeight(messageRect) * 0.5 - 5;
     self.messageBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [messageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
@@ -77,7 +77,7 @@
     self.coutTimeLabel = [[UILabel alloc]initWithFrame:messageRect];
     self.coutTimeLabel.text = @"发送验证码";
     self.coutTimeLabel.textColor = color;
-    self.coutTimeLabel.font = [UIFont systemFontOfSize:15];
+    self.coutTimeLabel.font = [UIFont systemFontOfSize:14];
     self.coutTimeLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.coutTimeLabel];
 }
@@ -147,7 +147,7 @@
     self.textField = [[UITextField alloc]init];
     self.textField.frame = userTfRect;
     self.textField.borderStyle = UITextBorderStyleNone;
-    self.textField.font = [UIFont fontWithName:@"Arial" size:18.0f];
+    self.textField.font = [UIFont fontWithName:@"Arial" size:16.0f];
     self.textField.textColor = [UIColor grayColor];
     self.textField.textAlignment = NSTextAlignmentLeft;
     self.textField.returnKeyType = UIReturnKeyDone;
@@ -160,7 +160,7 @@
     CGRect userCleanBtnRect = CGRectZero;
     userCleanBtnRect.size.width = userCleanBtnImage.size.width;
     userCleanBtnRect.size.height = userCleanBtnImage.size.height;
-    userCleanBtnRect.origin.x = CGRectGetWidth(self.frame) - CGRectGetWidth(userCleanBtnRect) - 50;
+    userCleanBtnRect.origin.x = CGRectGetWidth(self.frame) - CGRectGetWidth(userCleanBtnRect) - 60;
     userCleanBtnRect.origin.y = CGRectGetMidY(self.textField.frame) - CGRectGetHeight(userCleanBtnRect) * 0.5;
     self.cleanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cleanBtn.hidden = YES;

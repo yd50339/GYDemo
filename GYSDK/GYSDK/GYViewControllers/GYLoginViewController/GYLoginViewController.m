@@ -47,7 +47,7 @@ GYTextfieldViewDelegate>
    
     UIImageView * bgImageView = [[UIImageView alloc]init];
     bgImageView.image = [GYImage imagesFromCustomBundle:@"gy_navBar"];
-    bgImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 220);
+    bgImageView.frame = CGRectMake(0, CGRectGetWidth(self.view.frame) - bgImageView.image.size.width,CGRectGetWidth(self.view.frame) , bgImageView.image.size.height);
     [self.view addSubview:bgImageView];
     
     
@@ -57,7 +57,7 @@ GYTextfieldViewDelegate>
     logoBgRect.size.width = logoBgView.image.size.width;
     logoBgRect.size.height = logoBgView.image.size.height;
     logoBgRect.origin.x = (CGRectGetWidth(self.view.frame) - CGRectGetWidth(logoBgRect)) * 0.5;
-    logoBgRect.origin.y = 152.5;
+    logoBgRect.origin.y = CGRectGetMaxY(bgImageView.frame) - CGRectGetHeight(logoBgRect) * 0.5;
     logoBgView.frame = logoBgRect;
     [self.view addSubview:logoBgView];
     
@@ -74,7 +74,7 @@ GYTextfieldViewDelegate>
     
     
     self.userTextView = [[GYTextfieldView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(logoBgView.frame) + 44, CGRectGetWidth(self.view.frame), 40)];
-    [self.userTextView  setPlaceholder:@"请输入手机号/邮箱" imageNamed:@"gy_user"];
+    [self.userTextView  setPlaceholder:@"请输入手机号码" imageNamed:@"gy_user"];
     self.userTextView .delegate = self;
     [self.view addSubview:self.userTextView ];
     

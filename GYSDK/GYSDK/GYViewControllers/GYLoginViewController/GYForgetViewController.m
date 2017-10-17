@@ -28,7 +28,7 @@ GYTextfieldViewDelegate>
     
     self.accountTextView = [[GYTextfieldView alloc]initWithFrame:CGRectMake(0, 120, CGRectGetWidth(self.view.frame), 40)];
     self.accountTextView.delegate = self;
-    [self.accountTextView setPlaceholder:@"请输入邮箱或者手机号" imageNamed:@"gy_user"];
+    [self.accountTextView setPlaceholder:@"请输入手机号码" imageNamed:@"gy_user"];
     [self.view addSubview:self.accountTextView];
     
     

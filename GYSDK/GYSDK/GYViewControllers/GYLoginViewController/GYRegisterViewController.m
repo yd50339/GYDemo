@@ -28,7 +28,7 @@
     self.navigationItem.title = @"注册";
     
     self.phoneTextView = [[GYTextfieldView alloc]initWithFrame:CGRectMake(0, 120, CGRectGetWidth(self.view.frame), 40)];
-    [self.phoneTextView setPlaceholder:@"请输入手机号" imageNamed:@"gy_phone"];
+    [self.phoneTextView setPlaceholder:@"请输入手机号码" imageNamed:@"gy_phone"];
     self.phoneTextView.delegate = self;
     [self.view addSubview:self.phoneTextView];
     

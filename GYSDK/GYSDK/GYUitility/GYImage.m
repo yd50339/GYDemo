@@ -11,8 +11,8 @@
 
 + (UIImage *)imagesFromCustomBundle:(NSString *)imgName
 {
-    NSString * imgStr = [NSString stringWithFormat:@"%@.png",imgName];
     NSBundle * myBundle =[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"GYSDK" ofType:@"bundle"]];
+    NSString * imgStr = [NSString stringWithFormat:@"%@",imgName];
     NSString * imgPath = [[myBundle resourcePath] stringByAppendingPathComponent:imgStr];
     UIImage * image = [UIImage imageWithContentsOfFile:imgPath];
     return image;
