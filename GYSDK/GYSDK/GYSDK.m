@@ -12,6 +12,7 @@
 #import "GYImage.h"
 #import "GYAlipay.h"
 #import "GYWXPay.h"
+#import "GYCusNavigationController.h"
 
 
 @implementation GYSDK
@@ -26,7 +27,7 @@
 {
     GYLoginViewController * loginVc = [[GYLoginViewController alloc]init];
     loginVc.result = resObj;
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVc];
+    GYCusNavigationController * nav = [[GYCusNavigationController alloc]initWithRootViewController:loginVc];
     [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
 }
 
@@ -63,7 +64,7 @@
     {
         GYPayViewController * payVc = [[GYPayViewController alloc]init];
         payVc.productInfo = productInfo;
-        UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:payVc];
+        GYCusNavigationController * nav = [[GYCusNavigationController alloc]initWithRootViewController:payVc];
         [[GYSDK getCurrentVC] presentViewController:nav animated:YES completion:nil];
     }
     else

@@ -284,8 +284,9 @@ UITableViewDelegate>
     
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
     NSString * userId = [dict stringForKey:@"userId"];
+    NSString * gameId = [dict stringForKey:@"gameId"];
     NSDictionary * param = @{@"user":@{@"userid":userId},
-                             @"games":@{@"gameid":@"1"},
+                             @"games":@{@"gameid":gameId},
                              @"ordergoods":@[@{@"orderid":@"",
                                                @"number":@"",
                                                @"title":product.name,
@@ -309,10 +310,7 @@ UITableViewDelegate>
 
 - (void)requestSign:(NSString *)orderId
 {
-     NSString * price = [self.productInfo stringForKey:@"price"];
-    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@"",
-                                           @"total_amount":price,
-                                           @"subject":@""}
+    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@""}
                                     path:@"alipay/pay"
                                         method:@"POST"
                                       response:^(NSDictionary *resObj)
@@ -328,7 +326,7 @@ UITableViewDelegate>
              }
              else
              {
-                 //6001 中途取消
+                 //6001 中途取消  4000 订单缺失
                  self.payButton.userInteractionEnabled = YES;
              }
  

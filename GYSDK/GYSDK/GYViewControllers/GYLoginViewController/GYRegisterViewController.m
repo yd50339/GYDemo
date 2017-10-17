@@ -135,10 +135,14 @@
              if ([status isEqualToString:@"0200"])
              {
                  GYTipView * tipView =  [[GYTipView alloc]initWithMsg:@"注册成功"];
-                 [tipView showAnimation:^(BOOL finished) {
+                 [tipView showAnimation:^(BOOL finished)
+                 {
                      [wself.navigationController popViewControllerAnimated:YES];
                  }];
-                 
+             }
+             else if ([status isEqualToString:@"0202"])
+             {
+                 [[[GYTipView alloc]initWithMsg:@"该用户已经注册"] showAnimation];
              }
              else
              {

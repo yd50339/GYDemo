@@ -202,9 +202,9 @@ GYTextfieldViewDelegate>
 
     NSDictionary * dict = @{@"username":userModel.userName? : @"",
                             @"password":userModel.password ? : @"",
-                            @"games":@[@{@"gamename":@"1",
+                            @"games":@[@{@"gamename":@"",
                                          @"gamepackage":@"111",
-                                         @"remark":@"zheshi"
+                                         @"remark":@""
                                          }],
                             @"type":@"1"};
     
@@ -226,6 +226,8 @@ GYTextfieldViewDelegate>
                      [loginDict setObject:token forKey:@"token"];
                      NSString * userId = [resObj stringForKey:@"userid"];
                      [loginDict setObject:userId forKey:@"userId"];
+                     NSString * gameId = [resObj stringForKey:@"gameid"];
+                     [loginDict setObject:gameId forKey:@"gameId"];
 //                     [GYKeyChain addKeychainData:token forKey:kGYKeyChainKey];
                      [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:kGYKeyChainKey];
                      [[NSUserDefaults standardUserDefaults] synchronize];
@@ -287,8 +289,8 @@ GYTextfieldViewDelegate>
 {
     if ([self checkLogin])
     {
+        [self.view endEditing:YES];
         [self requestLogin:self.userModel];
-
     }
     
 }
@@ -328,7 +330,5 @@ GYTextfieldViewDelegate>
     return YES;
     
 }
-
-
 
 @end
