@@ -37,7 +37,8 @@
     NSString * httpMethod = method;
     NSMutableURLRequest * request = [reqApi requestWithMethod:httpMethod URLString:urlStr parameters:param error:nil];
     
-    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
+    NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
+    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     if ([loginDict stringForKey:@"token"].length > 0)
     {
         [request addValue:[loginDict stringForKey:@"token"] forHTTPHeaderField:@"token"];

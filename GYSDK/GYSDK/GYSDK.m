@@ -33,14 +33,15 @@
 
 + (void)logout
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kGYKeyChainKey];
+    NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:bundleId];
 }
 
 + (BOOL)isLogin
 {
 //    NSMutableDictionary * loginDict =  [GYKeyChain getKeychainQuery:kGYKeyChainKey];
-    
-    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
+    NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
+    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSLog(@"%@",loginDict);
 
     if ([loginDict stringForKey:@"token"].length > 0)

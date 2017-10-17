@@ -200,10 +200,11 @@ GYTextfieldViewDelegate>
 {
     [self startLoading];
 
+    NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
     NSDictionary * dict = @{@"username":userModel.userName? : @"",
                             @"password":userModel.password ? : @"",
                             @"games":@[@{@"gamename":@"",
-                                         @"gamepackage":@"111",
+                                         @"gamepackage":bundleId,
                                          @"remark":@""
                                          }],
                             @"type":@"1"};
@@ -229,7 +230,7 @@ GYTextfieldViewDelegate>
                      NSString * gameId = [resObj stringForKey:@"gameid"];
                      [loginDict setObject:gameId forKey:@"gameId"];
 //                     [GYKeyChain addKeychainData:token forKey:kGYKeyChainKey];
-                     [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:kGYKeyChainKey];
+                     [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
                      [[NSUserDefaults standardUserDefaults] synchronize];
                      
                      [wself dismissViewControllerAnimated:YES completion:nil];

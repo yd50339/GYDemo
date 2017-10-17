@@ -282,7 +282,8 @@ UITableViewDelegate>
     product.name = [self.productInfo stringForKey:@"name"];
     product.price = [self.productInfo stringForKey:@"price"];
     
-    NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:kGYKeyChainKey];
+    NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSString * userId = [dict stringForKey:@"userId"];
     NSString * gameId = [dict stringForKey:@"gameId"];
     NSDictionary * param = @{@"user":@{@"userid":userId},
