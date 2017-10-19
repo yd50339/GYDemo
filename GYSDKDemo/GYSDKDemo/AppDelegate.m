@@ -24,7 +24,7 @@
     ViewController * vc  = [[ViewController alloc]init];
     self.window.rootViewController = vc;
   
-    [GYSDK registerApp:@"11"];
+    [GYSDK registerApp];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -62,11 +62,16 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return [GYSDK application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    return [GYSDK application:application
+                      openURL:url
+            sourceApplication:sourceApplication
+                   annotation:annotation];
 }
 
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString*, id> *)options
 {
     return [GYSDK application:app openURL:url options:options];
 }

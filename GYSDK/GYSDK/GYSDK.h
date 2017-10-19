@@ -13,7 +13,7 @@ typedef void(^ResponseObj)(NSDictionary * resObj);
 @interface GYSDK : NSObject
 
 //注册app
-+ (void)registerApp:(NSString *)gameId;
++ (void)registerApp;
 
 //登录状态
 + (BOOL)isLogin;

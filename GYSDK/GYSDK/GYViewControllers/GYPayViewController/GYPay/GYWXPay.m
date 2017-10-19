@@ -52,8 +52,8 @@
 {
     time_t now;
     time(&now);
-    NSString * time_stamp  = [NSString stringWithFormat:@"%ld", now];
-    NSString * package = @"Sign=WXPay";
+//    NSString * time_stamp  = [NSString stringWithFormat:@"%ld", now];
+//    NSString * package = @"Sign=WXPay";
    
     //============================================================
     // V3&V4支付流程

@@ -153,9 +153,11 @@
          NSLog(@"修改密码：%@",resObj);
          dispatch_async(dispatch_get_main_queue(), ^{
              NSString * status = [resObj stringForKey:@"status"];
-             if ([status isEqualToString:@"0202"])
+             if ([status isEqualToString:@"0200"])
              {
-                 [self showResultView];
+                 [wself showResultView];
+                 
+                 [wself performSelector:@selector(goBack) withObject:nil afterDelay:1];
              }
              else
              {
@@ -166,6 +168,11 @@
          });
 
      }];
+}
+
+- (void)goBack
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Delegate

@@ -123,7 +123,7 @@ GYTextfieldViewDelegate>
                  GYTipView * tipView =  [[GYTipView alloc]initWithMsg:@"验证成功"];
                  [tipView showAnimation:^(BOOL finished) {
                      GYPasswordViewController * passwordVc = [[GYPasswordViewController alloc]init];
-                     passwordVc.phoneNum = self.accountTextView.textField.text;
+                     passwordVc.phoneNum = wself.accountTextView.textField.text;
                      [wself.navigationController pushViewController:passwordVc animated:YES];
                  }];
 

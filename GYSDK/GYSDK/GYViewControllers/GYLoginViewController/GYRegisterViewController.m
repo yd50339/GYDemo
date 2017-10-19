@@ -15,6 +15,7 @@
 @property(nonatomic , strong)GYTextfieldView * verifyCodeView;
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
 @property(nonatomic , strong)GYUserModel * userModel;
+@property(nonatomic , strong)UIButton * registerBtn;
 @end
 
 @implementation GYRegisterViewController
@@ -51,15 +52,15 @@
     confirmRect.size.height = confirmImage.size.height;
     confirmRect.origin.x = (CGRectGetWidth(self.view.frame) - CGRectGetWidth(confirmRect)) * 0.5;
     confirmRect.origin.y = CGRectGetMaxY(self.passwordTextView.frame) + 40;
-    UIButton * confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    confirmBtn.frame = confirmRect;
-    [confirmBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [confirmBtn setBackgroundImage:confirmImage forState:UIControlStateNormal];
-    [confirmBtn setTitle:@"立即注册" forState:UIControlStateNormal];
-    [confirmBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
-    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:confirmBtn];
+    self.registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.registerBtn.frame = confirmRect;
+    [self.registerBtn addTarget:self action:@selector(registerBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.registerBtn setBackgroundImage:confirmImage forState:UIControlStateNormal];
+    [self.registerBtn setTitle:@"立即注册" forState:UIControlStateNormal];
+    [self.registerBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
+    [self.registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.registerBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.registerBtn];
 
 
 }
@@ -102,7 +103,7 @@
 }
 
 #pragma mark - ButtonOnClick
-- (void)confirmBtnOnClick
+- (void)registerBtnOnClick
 {
     if ([self checkRegister])
     {
@@ -115,7 +116,7 @@
 
 - (void)requestRegister:(GYUserModel *)userModel
 {
-    
+    self.registerBtn.userInteractionEnabled = NO;
     [self startLoading];
     
     NSDictionary * parma = @{@"username":userModel.phone ?  : @"",
@@ -140,13 +141,17 @@
                      [wself.navigationController popViewControllerAnimated:YES];
                  }];
              }
-             else if ([status isEqualToString:@"0202"])
-             {
-                 [[[GYTipView alloc]initWithMsg:@"该用户已经注册"] showAnimation];
-             }
              else
              {
-                 [[[GYTipView alloc]initWithMsg:@"注册失败"] showAnimation];
+                 if ([status isEqualToString:@"0202"])
+                 {
+                     [[[GYTipView alloc]initWithMsg:@"该用户已经注册"] showAnimation];
+                 }
+                 else
+                 {
+                   [[[GYTipView alloc]initWithMsg:@"注册失败"] showAnimation];
+                 }
+                 wself.registerBtn.userInteractionEnabled = YES;
              }
              [wself stopLoading];
 
