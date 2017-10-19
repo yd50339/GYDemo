@@ -62,7 +62,7 @@
     messageRect.size.width = 100;
     messageRect.size.height = 40;
     messageRect.origin.x = (CGRectGetWidth(self.frame) - CGRectGetWidth(messageRect) - CGRectGetMinX(self.cleanBtn.frame)) * 0.5 + CGRectGetMinX(self.cleanBtn.frame);
-    messageRect.origin.y = CGRectGetMidY(rect) - CGRectGetHeight(messageRect) * 0.5 - 5;
+    messageRect.origin.y = CGRectGetMidY(rect) - CGRectGetHeight(messageRect) * 0.5 - 10;
     self.messageBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [messageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
 //    [messageBtn setTitleColor:color forState:UIControlStateNormal];
@@ -171,7 +171,7 @@
     
     
     CGRect userLineRect = userTfRect;
-    userLineRect.origin.y = CGRectGetMaxY(userTfRect) + 7;
+    userLineRect.origin.y = CGRectGetMaxY(userTfRect);
     userLineRect.size.height = 1;
     userLineRect.size.width = CGRectGetWidth(self.frame) - 50;
     userLineRect.origin.x = 25;

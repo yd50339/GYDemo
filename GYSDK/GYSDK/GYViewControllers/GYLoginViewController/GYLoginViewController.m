@@ -57,7 +57,7 @@ GYTextfieldViewDelegate>
     logoBgRect.size.width = logoBgView.image.size.width;
     logoBgRect.size.height = logoBgView.image.size.height;
     logoBgRect.origin.x = (CGRectGetWidth(self.view.frame) - CGRectGetWidth(logoBgRect)) * 0.5;
-    logoBgRect.origin.y = CGRectGetMaxY(bgImageView.frame) - CGRectGetHeight(logoBgRect) * 0.5;
+    logoBgRect.origin.y = CGRectGetMaxY(bgImageView.frame) - CGRectGetHeight(logoBgRect) * 0.5 - 10;
     logoBgView.frame = logoBgRect;
     [self.view addSubview:logoBgView];
     
@@ -109,8 +109,11 @@ GYTextfieldViewDelegate>
     rect.size.height = 44;
     registerBtn.frame = rect;
     [registerBtn addTarget:self action:@selector(registerBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [registerBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
+    NSDictionary * registerAtt = @{NSFontAttributeName:[UIFont systemFontOfSize:15],
+                                   NSForegroundColorAttributeName:[UIColor grayColor]};
+    NSMutableAttributedString * registerTitle = [[NSMutableAttributedString alloc]initWithString:@"注册"
+                                                                                      attributes:registerAtt];
+    [registerBtn setAttributedTitle:registerTitle forState:UIControlStateNormal];
     registerBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:registerBtn];
     
@@ -123,8 +126,11 @@ GYTextfieldViewDelegate>
     forgetRect.size.height = 44;
     forgetBtn.frame = forgetRect;
     [forgetBtn addTarget:self action:@selector(forgetBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [forgetBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
+    NSDictionary * forgetAtt = @{NSFontAttributeName:[UIFont systemFontOfSize:15],
+                                 NSForegroundColorAttributeName:[UIColor grayColor]};
+    NSMutableAttributedString * forgetTitle = [[NSMutableAttributedString alloc]initWithString:@"忘记密码"
+                                                                                    attributes:forgetAtt];
+    [forgetBtn setAttributedTitle:forgetTitle forState:UIControlStateNormal];
     forgetBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:forgetBtn];
 
