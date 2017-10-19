@@ -107,6 +107,7 @@
 {
     if ([self checkRegister])
     {
+        self.registerBtn.userInteractionEnabled = NO;
         [self requestRegister:self.userModel];
     }
 
@@ -138,6 +139,7 @@
                  GYTipView * tipView =  [[GYTipView alloc]initWithMsg:@"注册成功"];
                  [tipView showAnimation:^(BOOL finished)
                  {
+                     wself.registerBtn.userInteractionEnabled = YES;
                      [wself.navigationController popViewControllerAnimated:YES];
                  }];
              }

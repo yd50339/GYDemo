@@ -12,6 +12,7 @@
 @property(nonatomic , strong)GYTextfieldView * firstPsd;
 @property(nonatomic , strong)GYTextfieldView * secondPsd;
 @property(nonatomic , strong)GYUserModel * userModel;
+@property(nonatomic , strong)UIButton * confirmBtn;
 
 @end
 
@@ -44,15 +45,15 @@
     confirmRect.size.height = confirmImage.size.height;
     confirmRect.origin.x = (CGRectGetWidth(self.view.frame) - CGRectGetWidth(confirmRect)) * 0.5;
     confirmRect.origin.y = CGRectGetMaxY(self.secondPsd.frame) + 40;
-    UIButton * confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    confirmBtn.frame = confirmRect;
-    [confirmBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [confirmBtn setBackgroundImage:confirmImage forState:UIControlStateNormal];
-    [confirmBtn setTitle:@"保存" forState:UIControlStateNormal];
-    [confirmBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
-    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:confirmBtn];
+    self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.confirmBtn.frame = confirmRect;
+    [self.confirmBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.confirmBtn setBackgroundImage:confirmImage forState:UIControlStateNormal];
+    [self.confirmBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [self.confirmBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
+    [self.confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.confirmBtn];
 
 }
 
@@ -132,6 +133,7 @@
 {
     if ([self checkChangePsd])
     {
+        self.confirmBtn.userInteractionEnabled = NO;
        [self changePsdRequest:self.userModel];
     }
 }
@@ -156,11 +158,11 @@
              if ([status isEqualToString:@"0200"])
              {
                  [wself showResultView];
-                 
                  [wself performSelector:@selector(goBack) withObject:nil afterDelay:1];
              }
              else
              {
+                 wself.confirmBtn.userInteractionEnabled = YES;
                  [[[GYTipView alloc]initWithMsg:@"密码修改失败"] showAnimation];
              }
              

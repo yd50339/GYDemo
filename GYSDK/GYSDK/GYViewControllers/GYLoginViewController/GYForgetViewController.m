@@ -15,6 +15,7 @@ GYTextfieldViewDelegate>
 @property(nonatomic ,strong)GYTextfieldView * verifyCodeView;
 @property(nonatomic , strong)NSMutableDictionary * paramDict;
 @property(nonatomic , strong)GYUserModel * userModel;
+@property(nonatomic , strong)UIButton * confirmBtn;
 
 @end
 
@@ -45,15 +46,15 @@ GYTextfieldViewDelegate>
     confirmRect.size.height = confirmImage.size.height;
     confirmRect.origin.x = (CGRectGetWidth(self.view.frame) - CGRectGetWidth(confirmRect)) * 0.5;
     confirmRect.origin.y = CGRectGetMaxY(self.verifyCodeView.frame) + 40;
-    UIButton * confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    confirmBtn.frame = confirmRect;
-    [confirmBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [confirmBtn setBackgroundImage:confirmImage forState:UIControlStateNormal];
-    [confirmBtn setTitle:@"下一步" forState:UIControlStateNormal];
-    [confirmBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
-    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:confirmBtn];
+    self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.confirmBtn.frame = confirmRect;
+    [self.confirmBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.confirmBtn setBackgroundImage:confirmImage forState:UIControlStateNormal];
+    [self.confirmBtn setTitle:@"下一步" forState:UIControlStateNormal];
+    [self.confirmBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
+    [self.confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.confirmBtn];
 
 
 }
@@ -96,6 +97,7 @@ GYTextfieldViewDelegate>
 {
     if ([self checkForget])
     {
+        self.confirmBtn.userInteractionEnabled = NO;
        [self forgetRequest:self.userModel];
     }
     
@@ -122,6 +124,7 @@ GYTextfieldViewDelegate>
              {
                  GYTipView * tipView =  [[GYTipView alloc]initWithMsg:@"验证成功"];
                  [tipView showAnimation:^(BOOL finished) {
+                     wself.confirmBtn.userInteractionEnabled = YES;
                      GYPasswordViewController * passwordVc = [[GYPasswordViewController alloc]init];
                      passwordVc.phoneNum = wself.accountTextView.textField.text;
                      [wself.navigationController pushViewController:passwordVc animated:YES];
@@ -130,6 +133,7 @@ GYTextfieldViewDelegate>
              }
              else
              {
+                 wself.confirmBtn.userInteractionEnabled = YES;
                  [[[GYTipView alloc]initWithMsg:@"验证码不正确"] showAnimation];
              }
              

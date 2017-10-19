@@ -20,6 +20,7 @@ GYTextfieldViewDelegate>
 @property(nonatomic , strong)GYTextfieldView * userTextView;
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
 @property(nonatomic , strong)GYUserModel * userModel;
+@property(nonatomic , strong)UIButton * loginBtn;
 
 @end
 
@@ -91,18 +92,18 @@ GYTextfieldViewDelegate>
     loginRect.size.height = loginImage.size.height;
     loginRect.origin.x = (CGRectGetWidth(self.view.frame) - CGRectGetWidth(loginRect)) * 0.5;
     loginRect.origin.y = CGRectGetMaxY(self.passwordTextView.frame) + 40;
-    UIButton * loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginBtn.frame = loginRect;
-    [loginBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [loginBtn setBackgroundImage:loginImage forState:UIControlStateNormal];
-    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [loginBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
-    [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    loginBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:loginBtn];
+    self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.loginBtn.frame = loginRect;
+    [self.loginBtn addTarget:self action:@selector(confirmBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginBtn setBackgroundImage:loginImage forState:UIControlStateNormal];
+    [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [self.loginBtn setTitleEdgeInsets:UIEdgeInsetsMake(-8, 0, 0, 0)];
+    [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.loginBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.loginBtn];
     
     UIButton * registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect rect = loginBtn.frame;
+    CGRect rect = self.loginBtn.frame;
     rect.origin.y = CGRectGetMaxY(rect);
     rect.origin.x = 44;
     rect.size.width = 44;
@@ -119,7 +120,7 @@ GYTextfieldViewDelegate>
     
     
     UIButton * forgetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect forgetRect = loginBtn.frame;
+    CGRect forgetRect = self.loginBtn.frame;
     forgetRect.origin.y = CGRectGetMaxY(forgetRect);
     forgetRect.size.width = 80;
     forgetRect.origin.x = CGRectGetWidth(self.view.frame) - 46 - 80;
@@ -221,38 +222,35 @@ GYTextfieldViewDelegate>
                                   method:@"POST"
                                 response:^(NSDictionary * resObj)
      {
-         if (resObj)
-         {
-             NSLog(@"登录：%@",resObj);
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 NSString * status = [resObj stringForKey:@"status"];
-                 if ([status isEqualToString:@"0200"])
-                 {
-                     NSMutableDictionary * loginDict = [NSMutableDictionary dictionary];
-                      NSString * token = [resObj stringForKey:@"token"];
-                     [loginDict setObject:token forKey:@"token"];
-                     NSString * userId = [resObj stringForKey:@"userid"];
-                     [loginDict setObject:userId forKey:@"userId"];
-                     NSString * gameId = [resObj stringForKey:@"gameid"];
-                     [loginDict setObject:gameId forKey:@"gameId"];
-//                     [GYKeyChain addKeychainData:token forKey:kGYKeyChainKey];
-                     [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
-                     [[NSUserDefaults standardUserDefaults] synchronize];
-                     
-                     [wself dismissViewControllerAnimated:YES completion:nil];
-                 }
-                 else
-                 {
-                     [[[GYTipView alloc]initWithMsg:@"用户名或密码错误"] showAnimation];
-                 }
-                 [wself stopLoading];
-             });
-             if (wself.result)
+         NSLog(@"登录：%@",resObj);
+         dispatch_async(dispatch_get_main_queue(), ^{
+             NSString * status = [resObj stringForKey:@"status"];
+             if ([status isEqualToString:@"0200"])
              {
-                wself.result(resObj);
+                 NSMutableDictionary * loginDict = [NSMutableDictionary dictionary];
+                 NSString * token = [resObj stringForKey:@"token"];
+                 [loginDict setObject:token forKey:@"token"];
+                 NSString * userId = [resObj stringForKey:@"userid"];
+                 [loginDict setObject:userId forKey:@"userId"];
+                 NSString * gameId = [resObj stringForKey:@"gameid"];
+                 [loginDict setObject:gameId forKey:@"gameId"];
+                 //[GYKeyChain addKeychainData:token forKey:kGYKeyChainKey];
+                 [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
+                 [[NSUserDefaults standardUserDefaults] synchronize];
+                 
+                 [wself dismissViewControllerAnimated:YES completion:nil];
              }
+             else
+             {
+                 wself.loginBtn.userInteractionEnabled = YES;
+                 [[[GYTipView alloc]initWithMsg:@"用户名或密码错误"] showAnimation];
+             }
+             [wself stopLoading];
+         });
+         if (wself.result)
+         {
+             wself.result(resObj);
          }
-         
          
      }];
     
@@ -296,6 +294,7 @@ GYTextfieldViewDelegate>
 {
     if ([self checkLogin])
     {
+        self.loginBtn.userInteractionEnabled = NO;
         [self.view endEditing:YES];
         [self requestLogin:self.userModel];
     }
