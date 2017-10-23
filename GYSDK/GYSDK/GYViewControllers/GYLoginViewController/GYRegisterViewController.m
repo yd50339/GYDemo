@@ -120,7 +120,7 @@
     self.registerBtn.userInteractionEnabled = NO;
     [self startLoading];
     
-    NSDictionary * parma = @{@"username":userModel.phone ?  : @"",
+    NSDictionary * parma = @{@"mobile":userModel.phone ?  : @"",
                              @"password":userModel.password ? : @"",
                              @"valicode":userModel.clientcode ? : @"",
                              @"type":@"1"

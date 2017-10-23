@@ -22,6 +22,8 @@
 		7865CE8A1F3B0540002B114E /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7865CE881F3B0540002B114E /* NSDictionary+Utils.m */; };
 		7867FF421F32B39100DB38C6 /* GYImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7867FF401F32B39100DB38C6 /* GYImage.h */; };
 		7867FF431F32B39100DB38C6 /* GYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867FF411F32B39100DB38C6 /* GYImage.m */; };
+		786A37621F99A97200E4A340 /* GYIAPHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 786A37601F99A97200E4A340 /* GYIAPHelper.h */; };
+		786A37631F99A97200E4A340 /* GYIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 786A37611F99A97200E4A340 /* GYIAPHelper.m */; };
 		787384F91F6286E30042DA00 /* GYUserModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 787384F71F6286E30042DA00 /* GYUserModel.h */; };
 		787384FA1F6286E30042DA00 /* GYUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 787384F81F6286E30042DA00 /* GYUserModel.m */; };
 		787EF53B1F53ECDC00072900 /* GYBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 787EF5311F53ECDC00072900 /* GYBaseViewController.h */; };
@@ -79,6 +81,8 @@
 		7865CE881F3B0540002B114E /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		7867FF401F32B39100DB38C6 /* GYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYImage.h; sourceTree = "<group>"; };
 		7867FF411F32B39100DB38C6 /* GYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYImage.m; sourceTree = "<group>"; };
+		786A37601F99A97200E4A340 /* GYIAPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GYIAPHelper.h; sourceTree = "<group>"; };
+		786A37611F99A97200E4A340 /* GYIAPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GYIAPHelper.m; sourceTree = "<group>"; };
 		787384F71F6286E30042DA00 /* GYUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYUserModel.h; sourceTree = "<group>"; };
 		787384F81F6286E30042DA00 /* GYUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYUserModel.m; sourceTree = "<group>"; };
 		787EF5311F53ECDC00072900 /* GYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYBaseViewController.h; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				787EF5801F53F06200072900 /* GYAlipay.m */,
 				787EF5811F53F06200072900 /* GYWXPay.h */,
 				787EF5821F53F06200072900 /* GYWXPay.m */,
+				786A37601F99A97200E4A340 /* GYIAPHelper.h */,
+				786A37611F99A97200E4A340 /* GYIAPHelper.m */,
 				787EF5831F53F06200072900 /* Util */,
 			);
 			path = GYPay;
@@ -334,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7865CE891F3B0540002B114E /* NSDictionary+Utils.h in Headers */,
+				786A37621F99A97200E4A340 /* GYIAPHelper.h in Headers */,
 				787EF53B1F53ECDC00072900 /* GYBaseViewController.h in Headers */,
 				787EF58F1F53F06200072900 /* GYWXPay.h in Headers */,
 				787EF56E1F53EDC600072900 /* GYRegisterViewController.h in Headers */,
@@ -438,6 +445,7 @@
 				785AE9641F4C110D001B534D /* GYEncrypto.m in Sources */,
 				787384FA1F6286E30042DA00 /* GYUserModel.m in Sources */,
 				7865CE8A1F3B0540002B114E /* NSDictionary+Utils.m in Sources */,
+				786A37631F99A97200E4A340 /* GYIAPHelper.m in Sources */,
 				787EF5921F53F06200072900 /* GYOrder.m in Sources */,
 				787EF5781F53EDED00072900 /* GYActivityView.m in Sources */,
 				787EF5901F53F06200072900 /* GYWXPay.m in Sources */,
