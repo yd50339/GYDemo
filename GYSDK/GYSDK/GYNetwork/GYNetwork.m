@@ -54,14 +54,24 @@
                                       resObj = [NSJSONSerialization JSONObjectWithData:data
                                                                                options:NSJSONReadingMutableContainers
                                                                                  error:nil];
-
+                                      BOOL isValidToken = [self isValidToken:resObj];
+                                      if (isValidToken)
                                       {
                                           if (res)
                                           {
                                               res(resObj);
                                           }
                                       }
-                                     
+                                      else
+                                      {
+                                          [[GYNetwork network] requestwithParam:param
+                                                                           path:path
+                                                                         method:method
+                                                                       response:^(NSDictionary *resObj)
+                                           {
+                                               
+                                           }];
+                                      }
                                   }
                                   
           
@@ -72,30 +82,22 @@
 }
 
 
-- (void)tokenWith:(NSDictionary *)resObj
+- (BOOL)isValidToken:(NSDictionary *)resObj
 {
-    
+    NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
+    NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSString * status = [resObj stringForKey:@"status"];
-    //                                      if ([status isEqualToString:@"0208"] || [status isEqualToString:@"0405"] )
-    //                                      {
-    //                                          [loginDict setObject:[[resObj stringForKey:@"token"] description] forKey:@"token"];
-    //                                          if (loginDict)
-    //                                          {
-    //                                              [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
-    //                                              [[NSUserDefaults standardUserDefaults]synchronize];
-    //                                          }
-    //                                          [[GYNetwork network] requestwithParam:param
-    //                                                                           path:path
-    //                                                                         method:method
-    //                                                                       response:^(NSDictionary *resObj)
-    //                                          {
-    //                                              if (res)
-    //                                              {
-    //                                                  res(resObj);
-    //                                              }
-    //                                          }];
-    //                                      }
-    //                                      else
+    if ([status isEqualToString:@"0208"] || [status isEqualToString:@"0405"] )
+    {
+        [loginDict setObject:[[resObj stringForKey:@"token"] description] forKey:@"token"];
+        if (loginDict && bundleId)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+        return NO;
+    }
+    return YES;
 }
 
 @end
