@@ -16,6 +16,8 @@ GYTextfieldViewDelegate>
 @property(nonatomic , strong)NSMutableDictionary * paramDict;
 @property(nonatomic , strong)GYUserModel * userModel;
 @property(nonatomic , strong)UIButton * confirmBtn;
+@property(nonatomic , assign)BOOL isRequesting;
+
 
 @end
 
@@ -97,7 +99,6 @@ GYTextfieldViewDelegate>
 {
     if ([self checkForget])
     {
-        self.confirmBtn.userInteractionEnabled = NO;
        [self forgetRequest:self.userModel];
     }
     
@@ -107,9 +108,16 @@ GYTextfieldViewDelegate>
 
 - (void)forgetRequest:(GYUserModel *)userModel
 {
+    if (self.isRequesting)
+    {
+        return;
+    }
+    self.isRequesting = YES;
+    [self startLoading];
+
     __weak typeof (self) wself = self;
     
-    NSDictionary * param = @{@"mobile":userModel.phone ? :@"",
+    NSDictionary * param = @{@"username":userModel.phone ? :@"",
                              @"valicode":userModel.clientcode? :@""};
     [[GYNetwork network]requestwithParam:param
                                     path:@"user/forgetpassone"
@@ -117,6 +125,7 @@ GYTextfieldViewDelegate>
                                   response:^(NSDictionary *resObj)
      {
          NSLog(@"忘记密码：%@",resObj);
+         wself.isRequesting = NO;
          dispatch_async(dispatch_get_main_queue(), ^{
              
              NSString * status = [resObj stringForKey:@"status"];
@@ -133,41 +142,14 @@ GYTextfieldViewDelegate>
              }
              else
              {
-                 wself.confirmBtn.userInteractionEnabled = YES;
                  [[[GYTipView alloc]initWithMsg:@"验证码不正确"] showAnimation];
              }
-             
              [wself stopLoading];
          });
      }];
 }
 
 #pragma mark - Delegate
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-                 textFieldView:(GYTextfieldView *)view
-{
-//    if (view == self.accountTextView)
-//    {
-//        if (![GYRegular validateMobile:textField.text])
-//        {
-//            [[[GYTipView alloc]initWithMsg:@"手机格式不正确"] showAnimation];
-//        }
-//        
-//    }
-//
-//    if (view == self.checkTextView)
-//    {
-//        if (![GYRegular validateVerifyCode:textField.text])
-//        {
-//            [[[GYTipView alloc]initWithMsg:@"验证码错误"] showAnimation];
-//        }
-//        
-//    }
-
-    
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextfield
                 textFieldView:(GYTextfieldView *)view
 {

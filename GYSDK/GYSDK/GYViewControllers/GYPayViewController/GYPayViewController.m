@@ -270,7 +270,7 @@ UITableViewDelegate>
 
 - (void)payButtonOnClick
 {
-    self.payButton.userInteractionEnabled = NO;
+//    self.payButton.userInteractionEnabled = NO;
     [self requestCreateOrder];
 }
 
@@ -282,12 +282,13 @@ UITableViewDelegate>
     product.name = [self.productInfo stringForKey:@"name"];
     product.price = [self.productInfo stringForKey:@"price"];
     
+    NSIndexPath* indexPath =  [self.payTableView indexPathForSelectedRow];
     NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSString * userId = [dict stringForKey:@"userId"];
     NSString * gameId = [dict stringForKey:@"gameId"];
-    NSDictionary * param = @{@"user":@{@"userid":userId},
-                             @"games":@{@"gameid":gameId},
+    NSDictionary * param = @{@"user":@{@"userid":userId ? :@""},
+                             @"games":@{@"gameid":gameId ? :@""},
                              @"ordergoods":@[@{@"orderid":@"",
                                                @"number":@"",
                                                @"title":product.name,
@@ -299,17 +300,35 @@ UITableViewDelegate>
                                       method:@"POST"
                                     response:^(NSDictionary *resObj)
          {
-             NSLog(@"%@",resObj);
-             
-             
-             [self requestSign:[resObj stringForKey:@"orderid"]];
+             NSLog(@"创建订单:%@",resObj);
+             NSString * orderId = [resObj stringForKey:@"orderid"];
+             if (indexPath.item == 0)
+             {
+                 [self requestAlipaySign:orderId];
+             }
+             else if(indexPath.item == 1)
+             {
+                 [self requestWXSign:orderId];
+             }
 
          }];
     
 }
 
 
-- (void)requestSign:(NSString *)orderId
+- (void)requestWXSign:(NSString *)orderId
+{
+    [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@""}
+                                    path:@"weixin/pay"
+                                  method:@"POST"
+                                response:^(NSDictionary *resObj)
+     {
+         [GYWXPay jumpToBizPay:resObj];
+     }];
+}
+
+
+- (void)requestAlipaySign:(NSString *)orderId
 {
     [[GYNetwork network]requestwithParam:@{@"orderid":orderId ? :@""}
                                     path:@"alipay/pay"
@@ -332,6 +351,7 @@ UITableViewDelegate>
              }
  
          }];
+         
      }];
 }
 

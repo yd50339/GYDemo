@@ -344,7 +344,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gy.dev.GYSDKDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gy.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -369,7 +369,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gy.dev.GYSDKDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gy.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

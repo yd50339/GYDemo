@@ -10,8 +10,8 @@
 @import UIKit;
 @interface GYWXPay : NSObject
 
-+ (void)wxRegister;
-+ (NSString *)jumpToBizPay;
++ (void)wxRegister:(NSString *)appId;
++ (NSString *)jumpToBizPay:(NSDictionary *)params;
 + (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url;
 + (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url

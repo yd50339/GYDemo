@@ -13,6 +13,7 @@
 @property(nonatomic , strong)GYTextfieldView * secondPsd;
 @property(nonatomic , strong)GYUserModel * userModel;
 @property(nonatomic , strong)UIButton * confirmBtn;
+@property(nonatomic , assign)BOOL isRequesting;
 
 @end
 
@@ -133,7 +134,6 @@
 {
     if ([self checkChangePsd])
     {
-        self.confirmBtn.userInteractionEnabled = NO;
        [self changePsdRequest:self.userModel];
     }
 }
@@ -143,7 +143,13 @@
 
 - (void)changePsdRequest:(GYUserModel *)userModel
 {
-    NSDictionary * param = @{@"mobile":userModel.phone ? :@"",
+    if (self.isRequesting)
+    {
+        return;
+    }
+    self.isRequesting = YES;
+    [self startLoading];
+    NSDictionary * param = @{@"username":userModel.phone ? :@"",
                              @"password": userModel.password ? :@"",
                              @"confirmpass":userModel.secPassword ? :@""};
     __weak typeof (self)wself = self;
@@ -162,11 +168,11 @@
              }
              else
              {
-                 wself.confirmBtn.userInteractionEnabled = YES;
                  [[[GYTipView alloc]initWithMsg:@"密码修改失败"] showAnimation];
              }
-             
+             wself.isRequesting = NO;
              [wself stopLoading];
+             
          });
 
      }];

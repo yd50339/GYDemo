@@ -31,7 +31,7 @@
                 response:(ResponseHandle)res
 {
 //     180.97.83.230
-    NSString * config = @"http://180.97.83.230:8080/GYDomestic/";
+    NSString * config = @"http://192.168.0.166:8080/GYDomestic/";
     NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = method;
@@ -54,18 +54,48 @@
                                       resObj = [NSJSONSerialization JSONObjectWithData:data
                                                                                options:NSJSONReadingMutableContainers
                                                                                  error:nil];
+
+                                      {
+                                          if (res)
+                                          {
+                                              res(resObj);
+                                          }
+                                      }
+                                     
                                   }
                                   
-                                  if (res)
-                                  {
-                                      res(resObj);
-                                  }
-                                  
-                                  
+          
                               }];
     
     [task resume];
 
+}
+
+
+- (void)tokenWith:(NSDictionary *)resObj
+{
+    
+    NSString * status = [resObj stringForKey:@"status"];
+    //                                      if ([status isEqualToString:@"0208"] || [status isEqualToString:@"0405"] )
+    //                                      {
+    //                                          [loginDict setObject:[[resObj stringForKey:@"token"] description] forKey:@"token"];
+    //                                          if (loginDict)
+    //                                          {
+    //                                              [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
+    //                                              [[NSUserDefaults standardUserDefaults]synchronize];
+    //                                          }
+    //                                          [[GYNetwork network] requestwithParam:param
+    //                                                                           path:path
+    //                                                                         method:method
+    //                                                                       response:^(NSDictionary *resObj)
+    //                                          {
+    //                                              if (res)
+    //                                              {
+    //                                                  res(resObj);
+    //                                              }
+    //                                          }];
+    //                                      }
+    //                                      else
 }
 
 @end

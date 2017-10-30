@@ -21,6 +21,8 @@ GYTextfieldViewDelegate>
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
 @property(nonatomic , strong)GYUserModel * userModel;
 @property(nonatomic , strong)UIButton * loginBtn;
+@property(nonatomic , assign)BOOL isRequesting;
+
 
 @end
 
@@ -205,13 +207,18 @@ GYTextfieldViewDelegate>
 
 - (void)requestLogin:(GYUserModel *)userModel
 {
+    if (self.isRequesting)
+    {
+        return;
+    }
+    self.isRequesting = YES;
     [self startLoading];
 
     NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
     NSDictionary * dict = @{@"username":userModel.userName? : @"",
                             @"password":userModel.password ? : @"",
                             @"games":@[@{@"gamename":@"",
-                                         @"gamepackage":bundleId,
+                                         @"gamepackage":bundleId ? :@"",
                                          @"remark":@""
                                          }],
                             @"type":@"1"};
@@ -223,6 +230,7 @@ GYTextfieldViewDelegate>
                                 response:^(NSDictionary * resObj)
      {
          NSLog(@"登录：%@",resObj);
+         wself.isRequesting = NO;
          dispatch_async(dispatch_get_main_queue(), ^{
              NSString * status = [resObj stringForKey:@"status"];
              if ([status isEqualToString:@"0200"])
@@ -242,7 +250,6 @@ GYTextfieldViewDelegate>
              }
              else
              {
-                 wself.loginBtn.userInteractionEnabled = YES;
                  [[[GYTipView alloc]initWithMsg:@"用户名或密码错误"] showAnimation];
              }
              [wself stopLoading];
@@ -265,16 +272,6 @@ GYTextfieldViewDelegate>
         [GYRegular validateMobile:self.userTextView.textField.text]) &&
         [GYRegular validatePassword:self.passwordTextView.textField.text])
     {
-//        NSString * key = [GYRegular validateEmail:self.userTextView.textField.text] ? @"email" : @"cellphone";
-//        if ([key isEqualToString:@"email"])
-//        {
-//            self.userModel.userName = self.userTextView.textField.text;
-//
-//        }
-//        if ([key isEqualToString:@"cellphone"])
-//        {
-//            self.userModel.phone = self.userTextView.textField.text;
-//        }
         self.userModel.userName = self.userTextView.textField.text;
         NSString * password = self.passwordTextView.textField.text;
         self.userModel.password = password;
@@ -294,7 +291,6 @@ GYTextfieldViewDelegate>
 {
     if ([self checkLogin])
     {
-        self.loginBtn.userInteractionEnabled = NO;
         [self.view endEditing:YES];
         [self requestLogin:self.userModel];
     }

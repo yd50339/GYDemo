@@ -17,9 +17,9 @@
 
 @implementation GYSDK
 
-+ (void)registerApp
++ (void)registerApp:(NSString *)appId
 {
-    [GYWXPay wxRegister];
+    [GYWXPay wxRegister:appId];
 }
 
 

@@ -16,6 +16,7 @@
 @property(nonatomic , strong)GYTextfieldView * passwordTextView;
 @property(nonatomic , strong)GYUserModel * userModel;
 @property(nonatomic , strong)UIButton * registerBtn;
+@property(nonatomic , assign)BOOL isRequesting;
 @end
 
 @implementation GYRegisterViewController
@@ -107,7 +108,6 @@
 {
     if ([self checkRegister])
     {
-        self.registerBtn.userInteractionEnabled = NO;
         [self requestRegister:self.userModel];
     }
 
@@ -117,10 +117,13 @@
 
 - (void)requestRegister:(GYUserModel *)userModel
 {
-    self.registerBtn.userInteractionEnabled = NO;
+    if (self.isRequesting)
+    {
+        return;
+    }
+    self.isRequesting = YES;
     [self startLoading];
-    
-    NSDictionary * parma = @{@"mobile":userModel.phone ?  : @"",
+    NSDictionary * parma = @{@"username":userModel.phone ?  : @"",
                              @"password":userModel.password ? : @"",
                              @"valicode":userModel.clientcode ? : @"",
                              @"type":@"1"
@@ -132,6 +135,7 @@
                                       response:^(NSDictionary *resObj)
      {
          NSLog(@"注册：%@",resObj);
+         wself.isRequesting = NO;
          dispatch_async(dispatch_get_main_queue(), ^{
              NSString * status = [resObj stringForKey:@"status"];
              if ([status isEqualToString:@"0200"])
@@ -153,7 +157,6 @@
                  {
                    [[[GYTipView alloc]initWithMsg:@"注册失败"] showAnimation];
                  }
-                 wself.registerBtn.userInteractionEnabled = YES;
              }
              [wself stopLoading];
 
@@ -162,14 +165,6 @@
 }
 
 #pragma mark - Delegate
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-                 textFieldView:(GYTextfieldView *)view
-{
-
-
-    
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextfield
                 textFieldView:(GYTextfieldView *)view
