@@ -10,6 +10,7 @@
 #import "GYRequestApi.h"
 #import "GYKeyChain.h"
 #import "NSDictionary+Utils.h"
+#import "GYSDK.h"
 @interface GYNetwork()
 
 @end
@@ -87,15 +88,24 @@
     NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
     NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSString * status = [resObj stringForKey:@"status"];
-    if ([status isEqualToString:@"0208"] || [status isEqualToString:@"0405"] )
+    status = @"0405";
+    if ([status isEqualToString:@"0208"])
     {
-        [loginDict setObject:[[resObj stringForKey:@"token"] description] forKey:@"token"];
-        if (loginDict && bundleId)
+        NSString * token = [resObj stringForKey:@"token"];
+        if (token.length > 0)
         {
+            [loginDict setObject:token forKey:@"token"];
             [[NSUserDefaults standardUserDefaults] setObject:loginDict forKey:bundleId];
             [[NSUserDefaults standardUserDefaults]synchronize];
+            return NO;
         }
-        return NO;
+    }
+    if ([status isEqualToString:@"0405"] )
+    {
+        [GYSDK logout];
+        [GYSDK gyLogin:^(NSDictionary *resObj) {
+            
+        }];
     }
     return YES;
 }

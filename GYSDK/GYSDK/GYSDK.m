@@ -35,6 +35,7 @@
 {
     NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:bundleId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (BOOL)isLogin
