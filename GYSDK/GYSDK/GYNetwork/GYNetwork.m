@@ -32,7 +32,7 @@
                 response:(ResponseHandle)res
 {
 //     180.97.83.230
-    NSString * config = @"http://192.168.0.166:8080/GYDomestic/";
+    NSString * config = @"http://180.97.83.230:8080/GYDomestic/";
     NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = method;

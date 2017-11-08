@@ -143,7 +143,7 @@
                  GYTipView * tipView =  [[GYTipView alloc]initWithMsg:@"注册成功"];
                  [tipView showAnimation:^(BOOL finished)
                  {
-                     wself.registerBtn.userInteractionEnabled = YES;
+                     [wself stopLoading];
                      [wself.navigationController popViewControllerAnimated:YES];
                  }];
              }
@@ -157,8 +157,9 @@
                  {
                    [[[GYTipView alloc]initWithMsg:@"注册失败"] showAnimation];
                  }
+                 [wself stopLoading];
+
              }
-             [wself stopLoading];
 
          });
     }];
