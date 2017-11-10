@@ -32,7 +32,7 @@
                 response:(ResponseHandle)res
 {
 //     180.97.83.230
-    NSString * config = @"http://180.97.83.230:8080/GYDomestic/";
+    NSString * config = @"http://192.168.0.121:8080/GYDomestic/";
     NSString * urlStr  = [config stringByAppendingString:path];
     GYRequestApi * reqApi =  [[GYRequestApi alloc]init];
     NSString * httpMethod = method;
@@ -88,7 +88,6 @@
     NSString * bundleId =   [[NSBundle mainBundle]bundleIdentifier];
     NSMutableDictionary * loginDict =  [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSString * status = [resObj stringForKey:@"status"];
-    status = @"0405";
     if ([status isEqualToString:@"0208"])
     {
         NSString * token = [resObj stringForKey:@"token"];
