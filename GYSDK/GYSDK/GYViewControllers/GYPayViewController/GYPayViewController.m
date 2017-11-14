@@ -270,7 +270,6 @@ UITableViewDelegate>
 
 - (void)payButtonOnClick
 {
-//    self.payButton.userInteractionEnabled = NO;
     [self requestCreateOrder];
 }
 
@@ -287,12 +286,14 @@ UITableViewDelegate>
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:bundleId];
     NSString * userId = [dict stringForKey:@"userId"];
     NSString * gameId = [dict stringForKey:@"gameId"];
+    NSString * thirdOrderId = [dict stringForKey:@"orderId"];
     NSDictionary * param = @{@"user":@{@"userid":userId ? :@""},
                              @"games":@{@"gameid":gameId ? :@""},
                              @"ordergoods":@[@{@"orderid":@"",
                                                @"number":@"",
                                                @"title":product.name,
-                                               @"price":product.price}],
+                                               @"price":product.price,
+                                               @"otherOrderID":thirdOrderId}],
                              @"payment":product.price};
     
     [[GYNetwork network]requestwithParam:param

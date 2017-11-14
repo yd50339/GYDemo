@@ -69,8 +69,9 @@
 
 - (void)payBtnOnClick
 {
-    [GYSDK gyPay:@{@"name":@"juzi",
-                   @"price":@"0.01"}];
+    [GYSDK gyPay:@{@"name":@"商品",
+                   @"price":@"0.01",
+                   @"orderId":@"11111123123"}];
 
 }
 
