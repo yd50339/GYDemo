@@ -1,0 +1,704 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		788D3C771FDFBF7E002121B6 /* YDSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3C751FDFBF7E002121B6 /* YDSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		788D3C801FDFC00A002121B6 /* YDSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3C7F1FDFC00A002121B6 /* YDSDK.m */; };
+		788D3C8C1FDFC09B002121B6 /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3C831FDFC09B002121B6 /* WXApi.h */; };
+		788D3C8D1FDFC09B002121B6 /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3C841FDFC09B002121B6 /* WXApiObject.h */; };
+		788D3C8E1FDFC09B002121B6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 788D3C851FDFC09B002121B6 /* README.txt */; };
+		788D3C8F1FDFC09B002121B6 /* WechatAuthSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3C861FDFC09B002121B6 /* WechatAuthSDK.h */; };
+		788D3C901FDFC09B002121B6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D3C871FDFC09B002121B6 /* libWeChatSDK.a */; };
+		788D3C911FDFC09B002121B6 /* AlipaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D3C891FDFC09B002121B6 /* AlipaySDK.a */; };
+		788D3C921FDFC09B002121B6 /* AlipaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3C8A1FDFC09B002121B6 /* AlipaySDK.h */; };
+		788D3C931FDFC09B002121B6 /* APayAuthInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3C8B1FDFC09B002121B6 /* APayAuthInfo.h */; };
+		788D3CB41FDFC256002121B6 /* NSDictionary+YDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CAA1FDFC255002121B6 /* NSDictionary+YDUtils.m */; };
+		788D3CB51FDFC256002121B6 /* YDRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CAB1FDFC255002121B6 /* YDRegular.m */; };
+		788D3CB61FDFC256002121B6 /* YDEncrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CAC1FDFC255002121B6 /* YDEncrypto.m */; };
+		788D3CB71FDFC256002121B6 /* YDKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CAD1FDFC255002121B6 /* YDKeyChain.m */; };
+		788D3CB81FDFC256002121B6 /* YDImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CAE1FDFC255002121B6 /* YDImage.m */; };
+		788D3CB91FDFC256002121B6 /* NSDictionary+YDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CAF1FDFC255002121B6 /* NSDictionary+YDUtils.h */; };
+		788D3CBA1FDFC256002121B6 /* YDRegular.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CB01FDFC255002121B6 /* YDRegular.h */; };
+		788D3CBB1FDFC256002121B6 /* YDKeyChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CB11FDFC255002121B6 /* YDKeyChain.h */; };
+		788D3CBC1FDFC256002121B6 /* YDEncrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CB21FDFC255002121B6 /* YDEncrypto.h */; };
+		788D3CBD1FDFC256002121B6 /* YDImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CB31FDFC255002121B6 /* YDImage.h */; };
+		788D3CC41FDFC272002121B6 /* YDRequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CC01FDFC272002121B6 /* YDRequestApi.m */; };
+		788D3CC51FDFC272002121B6 /* YDRequestApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CC11FDFC272002121B6 /* YDRequestApi.h */; };
+		788D3CC61FDFC272002121B6 /* YDNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CC21FDFC272002121B6 /* YDNetwork.h */; };
+		788D3CC71FDFC272002121B6 /* YDNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CC31FDFC272002121B6 /* YDNetwork.m */; };
+		788D3CF41FDFC39F002121B6 /* YDCusNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CC91FDFC39F002121B6 /* YDCusNavigationController.m */; };
+		788D3CF51FDFC39F002121B6 /* YDPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CCC1FDFC39F002121B6 /* YDPayTableViewCell.m */; };
+		788D3CF61FDFC39F002121B6 /* YDPayTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CCD1FDFC39F002121B6 /* YDPayTableViewCell.h */; };
+		788D3CF71FDFC39F002121B6 /* YDAlipay.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CCF1FDFC39F002121B6 /* YDAlipay.m */; };
+		788D3CF81FDFC39F002121B6 /* WXApiManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CD11FDFC39F002121B6 /* WXApiManager.h */; };
+		788D3CF91FDFC39F002121B6 /* YDOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CD21FDFC39F002121B6 /* YDOrder.m */; };
+		788D3CFA1FDFC39F002121B6 /* YDOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CD31FDFC39F002121B6 /* YDOrder.h */; };
+		788D3CFB1FDFC39F002121B6 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CD41FDFC39F002121B6 /* WXApiManager.m */; };
+		788D3CFC1FDFC3A0002121B6 /* YDWXPay.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CD51FDFC39F002121B6 /* YDWXPay.h */; };
+		788D3CFD1FDFC3A0002121B6 /* YDIAPHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CD61FDFC39F002121B6 /* YDIAPHelper.h */; };
+		788D3CFE1FDFC3A0002121B6 /* YDIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CD71FDFC39F002121B6 /* YDIAPHelper.m */; };
+		788D3CFF1FDFC3A0002121B6 /* YDWXPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CD81FDFC39F002121B6 /* YDWXPay.m */; };
+		788D3D001FDFC3A0002121B6 /* YDAlipay.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CD91FDFC39F002121B6 /* YDAlipay.h */; };
+		788D3D011FDFC3A0002121B6 /* YDProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CDA1FDFC39F002121B6 /* YDProduct.m */; };
+		788D3D021FDFC3A0002121B6 /* YDPayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CDB1FDFC39F002121B6 /* YDPayViewController.h */; };
+		788D3D031FDFC3A0002121B6 /* YDProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CDC1FDFC39F002121B6 /* YDProduct.h */; };
+		788D3D041FDFC3A0002121B6 /* YDPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CDD1FDFC39F002121B6 /* YDPayViewController.m */; };
+		788D3D051FDFC3A0002121B6 /* YDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CDE1FDFC39F002121B6 /* YDBaseViewController.m */; };
+		788D3D061FDFC3A0002121B6 /* YDForgetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CE01FDFC39F002121B6 /* YDForgetViewController.h */; };
+		788D3D071FDFC3A0002121B6 /* YDPasswordViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CE11FDFC39F002121B6 /* YDPasswordViewController.h */; };
+		788D3D081FDFC3A0002121B6 /* YDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CE21FDFC39F002121B6 /* YDLoginViewController.m */; };
+		788D3D091FDFC3A0002121B6 /* YDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CE31FDFC39F002121B6 /* YDRegisterViewController.m */; };
+		788D3D0A1FDFC3A0002121B6 /* YDPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CE41FDFC39F002121B6 /* YDPasswordViewController.m */; };
+		788D3D0B1FDFC3A0002121B6 /* YDForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CE51FDFC39F002121B6 /* YDForgetViewController.m */; };
+		788D3D0C1FDFC3A0002121B6 /* YDRegisterViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CE61FDFC39F002121B6 /* YDRegisterViewController.h */; };
+		788D3D0D1FDFC3A0002121B6 /* YDUserModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CE81FDFC39F002121B6 /* YDUserModel.h */; };
+		788D3D0E1FDFC3A0002121B6 /* YDUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CE91FDFC39F002121B6 /* YDUserModel.m */; };
+		788D3D0F1FDFC3A0002121B6 /* YDLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CEA1FDFC39F002121B6 /* YDLoginViewController.h */; };
+		788D3D101FDFC3A0002121B6 /* YDActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CEC1FDFC39F002121B6 /* YDActivityView.m */; };
+		788D3D111FDFC3A0002121B6 /* YDTextfieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CED1FDFC39F002121B6 /* YDTextfieldView.h */; };
+		788D3D121FDFC3A0002121B6 /* YDTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CEE1FDFC39F002121B6 /* YDTipView.m */; };
+		788D3D131FDFC3A0002121B6 /* YDActivityView.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CEF1FDFC39F002121B6 /* YDActivityView.h */; };
+		788D3D141FDFC3A0002121B6 /* YDTextfieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788D3CF01FDFC39F002121B6 /* YDTextfieldView.m */; };
+		788D3D151FDFC3A0002121B6 /* YDTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CF11FDFC39F002121B6 /* YDTipView.h */; };
+		788D3D161FDFC3A0002121B6 /* YDCusNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CF21FDFC39F002121B6 /* YDCusNavigationController.h */; };
+		788D3D171FDFC3A0002121B6 /* YDBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 788D3CF31FDFC39F002121B6 /* YDBaseViewController.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		788D3C721FDFBF7E002121B6 /* YDSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YDSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D3C751FDFBF7E002121B6 /* YDSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDSDK.h; sourceTree = "<group>"; };
+		788D3C761FDFBF7E002121B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		788D3C7F1FDFC00A002121B6 /* YDSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDSDK.m; sourceTree = "<group>"; };
+		788D3C831FDFC09B002121B6 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		788D3C841FDFC09B002121B6 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		788D3C851FDFC09B002121B6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		788D3C861FDFC09B002121B6 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		788D3C871FDFC09B002121B6 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		788D3C891FDFC09B002121B6 /* AlipaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipaySDK.a; sourceTree = "<group>"; };
+		788D3C8A1FDFC09B002121B6 /* AlipaySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipaySDK.h; sourceTree = "<group>"; };
+		788D3C8B1FDFC09B002121B6 /* APayAuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APayAuthInfo.h; sourceTree = "<group>"; };
+		788D3CAA1FDFC255002121B6 /* NSDictionary+YDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+YDUtils.m"; sourceTree = "<group>"; };
+		788D3CAB1FDFC255002121B6 /* YDRegular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDRegular.m; sourceTree = "<group>"; };
+		788D3CAC1FDFC255002121B6 /* YDEncrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDEncrypto.m; sourceTree = "<group>"; };
+		788D3CAD1FDFC255002121B6 /* YDKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDKeyChain.m; sourceTree = "<group>"; };
+		788D3CAE1FDFC255002121B6 /* YDImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDImage.m; sourceTree = "<group>"; };
+		788D3CAF1FDFC255002121B6 /* NSDictionary+YDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+YDUtils.h"; sourceTree = "<group>"; };
+		788D3CB01FDFC255002121B6 /* YDRegular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDRegular.h; sourceTree = "<group>"; };
+		788D3CB11FDFC255002121B6 /* YDKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDKeyChain.h; sourceTree = "<group>"; };
+		788D3CB21FDFC255002121B6 /* YDEncrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDEncrypto.h; sourceTree = "<group>"; };
+		788D3CB31FDFC255002121B6 /* YDImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDImage.h; sourceTree = "<group>"; };
+		788D3CC01FDFC272002121B6 /* YDRequestApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDRequestApi.m; sourceTree = "<group>"; };
+		788D3CC11FDFC272002121B6 /* YDRequestApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDRequestApi.h; sourceTree = "<group>"; };
+		788D3CC21FDFC272002121B6 /* YDNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDNetwork.h; sourceTree = "<group>"; };
+		788D3CC31FDFC272002121B6 /* YDNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDNetwork.m; sourceTree = "<group>"; };
+		788D3CC91FDFC39F002121B6 /* YDCusNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCusNavigationController.m; sourceTree = "<group>"; };
+		788D3CCC1FDFC39F002121B6 /* YDPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPayTableViewCell.m; sourceTree = "<group>"; };
+		788D3CCD1FDFC39F002121B6 /* YDPayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPayTableViewCell.h; sourceTree = "<group>"; };
+		788D3CCF1FDFC39F002121B6 /* YDAlipay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAlipay.m; sourceTree = "<group>"; };
+		788D3CD11FDFC39F002121B6 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		788D3CD21FDFC39F002121B6 /* YDOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDOrder.m; sourceTree = "<group>"; };
+		788D3CD31FDFC39F002121B6 /* YDOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDOrder.h; sourceTree = "<group>"; };
+		788D3CD41FDFC39F002121B6 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		788D3CD51FDFC39F002121B6 /* YDWXPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDWXPay.h; sourceTree = "<group>"; };
+		788D3CD61FDFC39F002121B6 /* YDIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDIAPHelper.h; sourceTree = "<group>"; };
+		788D3CD71FDFC39F002121B6 /* YDIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDIAPHelper.m; sourceTree = "<group>"; };
+		788D3CD81FDFC39F002121B6 /* YDWXPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDWXPay.m; sourceTree = "<group>"; };
+		788D3CD91FDFC39F002121B6 /* YDAlipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAlipay.h; sourceTree = "<group>"; };
+		788D3CDA1FDFC39F002121B6 /* YDProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDProduct.m; sourceTree = "<group>"; };
+		788D3CDB1FDFC39F002121B6 /* YDPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPayViewController.h; sourceTree = "<group>"; };
+		788D3CDC1FDFC39F002121B6 /* YDProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDProduct.h; sourceTree = "<group>"; };
+		788D3CDD1FDFC39F002121B6 /* YDPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPayViewController.m; sourceTree = "<group>"; };
+		788D3CDE1FDFC39F002121B6 /* YDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDBaseViewController.m; sourceTree = "<group>"; };
+		788D3CE01FDFC39F002121B6 /* YDForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDForgetViewController.h; sourceTree = "<group>"; };
+		788D3CE11FDFC39F002121B6 /* YDPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPasswordViewController.h; sourceTree = "<group>"; };
+		788D3CE21FDFC39F002121B6 /* YDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDLoginViewController.m; sourceTree = "<group>"; };
+		788D3CE31FDFC39F002121B6 /* YDRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDRegisterViewController.m; sourceTree = "<group>"; };
+		788D3CE41FDFC39F002121B6 /* YDPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPasswordViewController.m; sourceTree = "<group>"; };
+		788D3CE51FDFC39F002121B6 /* YDForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDForgetViewController.m; sourceTree = "<group>"; };
+		788D3CE61FDFC39F002121B6 /* YDRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDRegisterViewController.h; sourceTree = "<group>"; };
+		788D3CE81FDFC39F002121B6 /* YDUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDUserModel.h; sourceTree = "<group>"; };
+		788D3CE91FDFC39F002121B6 /* YDUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDUserModel.m; sourceTree = "<group>"; };
+		788D3CEA1FDFC39F002121B6 /* YDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDLoginViewController.h; sourceTree = "<group>"; };
+		788D3CEC1FDFC39F002121B6 /* YDActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDActivityView.m; sourceTree = "<group>"; };
+		788D3CED1FDFC39F002121B6 /* YDTextfieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDTextfieldView.h; sourceTree = "<group>"; };
+		788D3CEE1FDFC39F002121B6 /* YDTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTipView.m; sourceTree = "<group>"; };
+		788D3CEF1FDFC39F002121B6 /* YDActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDActivityView.h; sourceTree = "<group>"; };
+		788D3CF01FDFC39F002121B6 /* YDTextfieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTextfieldView.m; sourceTree = "<group>"; };
+		788D3CF11FDFC39F002121B6 /* YDTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDTipView.h; sourceTree = "<group>"; };
+		788D3CF21FDFC39F002121B6 /* YDCusNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCusNavigationController.h; sourceTree = "<group>"; };
+		788D3CF31FDFC39F002121B6 /* YDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDBaseViewController.h; sourceTree = "<group>"; };
+		788D3D191FDFC463002121B6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		788D3D1B1FDFC470002121B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		788D3D1D1FDFC47C002121B6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		788D3D1F1FDFC484002121B6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		788D3D211FDFC48B002121B6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		788D3D231FDFC492002121B6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		788D3D251FDFC498002121B6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		788D3D271FDFC4A2002121B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		788D3D291FDFC4A9002121B6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		788D3D2B1FDFC4B3002121B6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		788D3C6E1FDFBF7E002121B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				788D3C911FDFC09B002121B6 /* AlipaySDK.a in Frameworks */,
+				788D3C901FDFC09B002121B6 /* libWeChatSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		788D3C681FDFBF7E002121B6 = {
+			isa = PBXGroup;
+			children = (
+				788D3C741FDFBF7E002121B6 /* YDSDK */,
+				788D3C731FDFBF7E002121B6 /* Products */,
+				788D3D181FDFC463002121B6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		788D3C731FDFBF7E002121B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				788D3C721FDFBF7E002121B6 /* YDSDK.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		788D3C741FDFBF7E002121B6 /* YDSDK */ = {
+			isa = PBXGroup;
+			children = (
+				788D3C751FDFBF7E002121B6 /* YDSDK.h */,
+				788D3C7F1FDFC00A002121B6 /* YDSDK.m */,
+				788D3CC81FDFC39F002121B6 /* YDViewControllers */,
+				788D3CBE1FDFC272002121B6 /* YDNetwork */,
+				788D3CA91FDFC255002121B6 /* YDUitils */,
+				788D3C811FDFC09B002121B6 /* YDLibary */,
+				788D3C761FDFBF7E002121B6 /* Info.plist */,
+			);
+			path = YDSDK;
+			sourceTree = "<group>";
+		};
+		788D3C811FDFC09B002121B6 /* YDLibary */ = {
+			isa = PBXGroup;
+			children = (
+				788D3C821FDFC09B002121B6 /* WXOpenSDK1.7.9 */,
+				788D3C881FDFC09B002121B6 /* AlipaySDK */,
+			);
+			path = YDLibary;
+			sourceTree = "<group>";
+		};
+		788D3C821FDFC09B002121B6 /* WXOpenSDK1.7.9 */ = {
+			isa = PBXGroup;
+			children = (
+				788D3C831FDFC09B002121B6 /* WXApi.h */,
+				788D3C841FDFC09B002121B6 /* WXApiObject.h */,
+				788D3C851FDFC09B002121B6 /* README.txt */,
+				788D3C861FDFC09B002121B6 /* WechatAuthSDK.h */,
+				788D3C871FDFC09B002121B6 /* libWeChatSDK.a */,
+			);
+			path = WXOpenSDK1.7.9;
+			sourceTree = "<group>";
+		};
+		788D3C881FDFC09B002121B6 /* AlipaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				788D3C891FDFC09B002121B6 /* AlipaySDK.a */,
+				788D3C8A1FDFC09B002121B6 /* AlipaySDK.h */,
+				788D3C8B1FDFC09B002121B6 /* APayAuthInfo.h */,
+			);
+			path = AlipaySDK;
+			sourceTree = "<group>";
+		};
+		788D3CA91FDFC255002121B6 /* YDUitils */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CAF1FDFC255002121B6 /* NSDictionary+YDUtils.h */,
+				788D3CAA1FDFC255002121B6 /* NSDictionary+YDUtils.m */,
+				788D3CB01FDFC255002121B6 /* YDRegular.h */,
+				788D3CAB1FDFC255002121B6 /* YDRegular.m */,
+				788D3CB21FDFC255002121B6 /* YDEncrypto.h */,
+				788D3CAC1FDFC255002121B6 /* YDEncrypto.m */,
+				788D3CB11FDFC255002121B6 /* YDKeyChain.h */,
+				788D3CAD1FDFC255002121B6 /* YDKeyChain.m */,
+				788D3CB31FDFC255002121B6 /* YDImage.h */,
+				788D3CAE1FDFC255002121B6 /* YDImage.m */,
+			);
+			path = YDUitils;
+			sourceTree = "<group>";
+		};
+		788D3CBE1FDFC272002121B6 /* YDNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CBF1FDFC272002121B6 /* YDRequestApi */,
+				788D3CC21FDFC272002121B6 /* YDNetwork.h */,
+				788D3CC31FDFC272002121B6 /* YDNetwork.m */,
+			);
+			path = YDNetwork;
+			sourceTree = "<group>";
+		};
+		788D3CBF1FDFC272002121B6 /* YDRequestApi */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CC11FDFC272002121B6 /* YDRequestApi.h */,
+				788D3CC01FDFC272002121B6 /* YDRequestApi.m */,
+			);
+			path = YDRequestApi;
+			sourceTree = "<group>";
+		};
+		788D3CC81FDFC39F002121B6 /* YDViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CCA1FDFC39F002121B6 /* YDPayViewController */,
+				788D3CDF1FDFC39F002121B6 /* YDLoginViewController */,
+				788D3CF31FDFC39F002121B6 /* YDBaseViewController.h */,
+				788D3CDE1FDFC39F002121B6 /* YDBaseViewController.m */,
+				788D3CF21FDFC39F002121B6 /* YDCusNavigationController.h */,
+				788D3CC91FDFC39F002121B6 /* YDCusNavigationController.m */,
+			);
+			path = YDViewControllers;
+			sourceTree = "<group>";
+		};
+		788D3CCA1FDFC39F002121B6 /* YDPayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CCB1FDFC39F002121B6 /* YDPayTableViewCell */,
+				788D3CCE1FDFC39F002121B6 /* YDPay */,
+				788D3CDC1FDFC39F002121B6 /* YDProduct.h */,
+				788D3CDA1FDFC39F002121B6 /* YDProduct.m */,
+				788D3CDB1FDFC39F002121B6 /* YDPayViewController.h */,
+				788D3CDD1FDFC39F002121B6 /* YDPayViewController.m */,
+			);
+			path = YDPayViewController;
+			sourceTree = "<group>";
+		};
+		788D3CCB1FDFC39F002121B6 /* YDPayTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CCD1FDFC39F002121B6 /* YDPayTableViewCell.h */,
+				788D3CCC1FDFC39F002121B6 /* YDPayTableViewCell.m */,
+			);
+			path = YDPayTableViewCell;
+			sourceTree = "<group>";
+		};
+		788D3CCE1FDFC39F002121B6 /* YDPay */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CD01FDFC39F002121B6 /* YDUtil */,
+				788D3CD61FDFC39F002121B6 /* YDIAPHelper.h */,
+				788D3CD71FDFC39F002121B6 /* YDIAPHelper.m */,
+				788D3CD51FDFC39F002121B6 /* YDWXPay.h */,
+				788D3CD81FDFC39F002121B6 /* YDWXPay.m */,
+				788D3CD91FDFC39F002121B6 /* YDAlipay.h */,
+				788D3CCF1FDFC39F002121B6 /* YDAlipay.m */,
+			);
+			path = YDPay;
+			sourceTree = "<group>";
+		};
+		788D3CD01FDFC39F002121B6 /* YDUtil */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CD31FDFC39F002121B6 /* YDOrder.h */,
+				788D3CD21FDFC39F002121B6 /* YDOrder.m */,
+				788D3CD11FDFC39F002121B6 /* WXApiManager.h */,
+				788D3CD41FDFC39F002121B6 /* WXApiManager.m */,
+			);
+			path = YDUtil;
+			sourceTree = "<group>";
+		};
+		788D3CDF1FDFC39F002121B6 /* YDLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CE01FDFC39F002121B6 /* YDForgetViewController.h */,
+				788D3CE51FDFC39F002121B6 /* YDForgetViewController.m */,
+				788D3CE11FDFC39F002121B6 /* YDPasswordViewController.h */,
+				788D3CE41FDFC39F002121B6 /* YDPasswordViewController.m */,
+				788D3CEA1FDFC39F002121B6 /* YDLoginViewController.h */,
+				788D3CE21FDFC39F002121B6 /* YDLoginViewController.m */,
+				788D3CE61FDFC39F002121B6 /* YDRegisterViewController.h */,
+				788D3CE31FDFC39F002121B6 /* YDRegisterViewController.m */,
+				788D3CE71FDFC39F002121B6 /* model */,
+				788D3CEB1FDFC39F002121B6 /* Views */,
+			);
+			path = YDLoginViewController;
+			sourceTree = "<group>";
+		};
+		788D3CE71FDFC39F002121B6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CE81FDFC39F002121B6 /* YDUserModel.h */,
+				788D3CE91FDFC39F002121B6 /* YDUserModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		788D3CEB1FDFC39F002121B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				788D3CED1FDFC39F002121B6 /* YDTextfieldView.h */,
+				788D3CF01FDFC39F002121B6 /* YDTextfieldView.m */,
+				788D3CEF1FDFC39F002121B6 /* YDActivityView.h */,
+				788D3CEC1FDFC39F002121B6 /* YDActivityView.m */,
+				788D3CF11FDFC39F002121B6 /* YDTipView.h */,
+				788D3CEE1FDFC39F002121B6 /* YDTipView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		788D3D181FDFC463002121B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				788D3D2B1FDFC4B3002121B6 /* libsqlite3.0.tbd */,
+				788D3D291FDFC4A9002121B6 /* CoreMotion.framework */,
+				788D3D271FDFC4A2002121B6 /* CoreGraphics.framework */,
+				788D3D251FDFC498002121B6 /* CoreText.framework */,
+				788D3D231FDFC492002121B6 /* QuartzCore.framework */,
+				788D3D211FDFC48B002121B6 /* CoreTelephony.framework */,
+				788D3D1F1FDFC484002121B6 /* libz.tbd */,
+				788D3D1D1FDFC47C002121B6 /* libc++.tbd */,
+				788D3D1B1FDFC470002121B6 /* SystemConfiguration.framework */,
+				788D3D191FDFC463002121B6 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		788D3C6F1FDFBF7E002121B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				788D3D0F1FDFC3A0002121B6 /* YDLoginViewController.h in Headers */,
+				788D3CBA1FDFC256002121B6 /* YDRegular.h in Headers */,
+				788D3D021FDFC3A0002121B6 /* YDPayViewController.h in Headers */,
+				788D3CBD1FDFC256002121B6 /* YDImage.h in Headers */,
+				788D3CF61FDFC39F002121B6 /* YDPayTableViewCell.h in Headers */,
+				788D3CBC1FDFC256002121B6 /* YDEncrypto.h in Headers */,
+				788D3CB91FDFC256002121B6 /* NSDictionary+YDUtils.h in Headers */,
+				788D3D161FDFC3A0002121B6 /* YDCusNavigationController.h in Headers */,
+				788D3CC51FDFC272002121B6 /* YDRequestApi.h in Headers */,
+				788D3CFD1FDFC3A0002121B6 /* YDIAPHelper.h in Headers */,
+				788D3CBB1FDFC256002121B6 /* YDKeyChain.h in Headers */,
+				788D3D0C1FDFC3A0002121B6 /* YDRegisterViewController.h in Headers */,
+				788D3D111FDFC3A0002121B6 /* YDTextfieldView.h in Headers */,
+				788D3CC61FDFC272002121B6 /* YDNetwork.h in Headers */,
+				788D3CFA1FDFC39F002121B6 /* YDOrder.h in Headers */,
+				788D3CF81FDFC39F002121B6 /* WXApiManager.h in Headers */,
+				788D3C8C1FDFC09B002121B6 /* WXApi.h in Headers */,
+				788D3D061FDFC3A0002121B6 /* YDForgetViewController.h in Headers */,
+				788D3D071FDFC3A0002121B6 /* YDPasswordViewController.h in Headers */,
+				788D3C931FDFC09B002121B6 /* APayAuthInfo.h in Headers */,
+				788D3D131FDFC3A0002121B6 /* YDActivityView.h in Headers */,
+				788D3D171FDFC3A0002121B6 /* YDBaseViewController.h in Headers */,
+				788D3C8F1FDFC09B002121B6 /* WechatAuthSDK.h in Headers */,
+				788D3D001FDFC3A0002121B6 /* YDAlipay.h in Headers */,
+				788D3CFC1FDFC3A0002121B6 /* YDWXPay.h in Headers */,
+				788D3D031FDFC3A0002121B6 /* YDProduct.h in Headers */,
+				788D3D151FDFC3A0002121B6 /* YDTipView.h in Headers */,
+				788D3C8D1FDFC09B002121B6 /* WXApiObject.h in Headers */,
+				788D3D0D1FDFC3A0002121B6 /* YDUserModel.h in Headers */,
+				788D3C921FDFC09B002121B6 /* AlipaySDK.h in Headers */,
+				788D3C771FDFBF7E002121B6 /* YDSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		788D3C711FDFBF7E002121B6 /* YDSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 788D3C7A1FDFBF7E002121B6 /* Build configuration list for PBXNativeTarget "YDSDK" */;
+			buildPhases = (
+				788D3C6D1FDFBF7E002121B6 /* Sources */,
+				788D3C6E1FDFBF7E002121B6 /* Frameworks */,
+				788D3C6F1FDFBF7E002121B6 /* Headers */,
+				788D3C701FDFBF7E002121B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YDSDK;
+			productName = YDSDK;
+			productReference = 788D3C721FDFBF7E002121B6 /* YDSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		788D3C691FDFBF7E002121B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = yd;
+				TargetAttributes = {
+					788D3C711FDFBF7E002121B6 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 788D3C6C1FDFBF7E002121B6 /* Build configuration list for PBXProject "YDSDK" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 788D3C681FDFBF7E002121B6;
+			productRefGroup = 788D3C731FDFBF7E002121B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				788D3C711FDFBF7E002121B6 /* YDSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		788D3C701FDFBF7E002121B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				788D3C8E1FDFC09B002121B6 /* README.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		788D3C6D1FDFBF7E002121B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				788D3CB71FDFC256002121B6 /* YDKeyChain.m in Sources */,
+				788D3CF41FDFC39F002121B6 /* YDCusNavigationController.m in Sources */,
+				788D3D091FDFC3A0002121B6 /* YDRegisterViewController.m in Sources */,
+				788D3CB61FDFC256002121B6 /* YDEncrypto.m in Sources */,
+				788D3D041FDFC3A0002121B6 /* YDPayViewController.m in Sources */,
+				788D3CB81FDFC256002121B6 /* YDImage.m in Sources */,
+				788D3D011FDFC3A0002121B6 /* YDProduct.m in Sources */,
+				788D3CFB1FDFC39F002121B6 /* WXApiManager.m in Sources */,
+				788D3CFE1FDFC3A0002121B6 /* YDIAPHelper.m in Sources */,
+				788D3CC41FDFC272002121B6 /* YDRequestApi.m in Sources */,
+				788D3D0B1FDFC3A0002121B6 /* YDForgetViewController.m in Sources */,
+				788D3CF91FDFC39F002121B6 /* YDOrder.m in Sources */,
+				788D3D081FDFC3A0002121B6 /* YDLoginViewController.m in Sources */,
+				788D3C801FDFC00A002121B6 /* YDSDK.m in Sources */,
+				788D3D0E1FDFC3A0002121B6 /* YDUserModel.m in Sources */,
+				788D3D141FDFC3A0002121B6 /* YDTextfieldView.m in Sources */,
+				788D3CC71FDFC272002121B6 /* YDNetwork.m in Sources */,
+				788D3D101FDFC3A0002121B6 /* YDActivityView.m in Sources */,
+				788D3CB41FDFC256002121B6 /* NSDictionary+YDUtils.m in Sources */,
+				788D3D0A1FDFC3A0002121B6 /* YDPasswordViewController.m in Sources */,
+				788D3CB51FDFC256002121B6 /* YDRegular.m in Sources */,
+				788D3D121FDFC3A0002121B6 /* YDTipView.m in Sources */,
+				788D3CF71FDFC39F002121B6 /* YDAlipay.m in Sources */,
+				788D3CF51FDFC39F002121B6 /* YDPayTableViewCell.m in Sources */,
+				788D3D051FDFC3A0002121B6 /* YDBaseViewController.m in Sources */,
+				788D3CFF1FDFC3A0002121B6 /* YDWXPay.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		788D3C781FDFBF7E002121B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		788D3C791FDFBF7E002121B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		788D3C7B1FDFBF7E002121B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = RPEE64G8GD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = YDSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YDSDK/YDLibary/WXOpenSDK1.7.9",
+					"$(PROJECT_DIR)/YDSDK/YDLibary/AlipaySDK",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yd.demo.YDSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		788D3C7C1FDFBF7E002121B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = RPEE64G8GD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = YDSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YDSDK/YDLibary/WXOpenSDK1.7.9",
+					"$(PROJECT_DIR)/YDSDK/YDLibary/AlipaySDK",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yd.demo.YDSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		788D3C6C1FDFBF7E002121B6 /* Build configuration list for PBXProject "YDSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				788D3C781FDFBF7E002121B6 /* Debug */,
+				788D3C791FDFBF7E002121B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		788D3C7A1FDFBF7E002121B6 /* Build configuration list for PBXNativeTarget "YDSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				788D3C7B1FDFBF7E002121B6 /* Debug */,
+				788D3C7C1FDFBF7E002121B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 788D3C691FDFBF7E002121B6 /* Project object */;
+}

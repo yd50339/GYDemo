@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		78338C091F399FB200094F15 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 78338C081F399FB200094F15 /* libsqlite3.0.tbd */; };
-		784906EA1F34281D0039C935 /* GYSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 784906E91F34281D0039C935 /* GYSDK.bundle */; };
 		7862FF041F39959C00459E3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7862FF031F39959C00459E3E /* CFNetwork.framework */; };
 		7862FF061F3996B700459E3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7862FF051F3996B700459E3E /* SystemConfiguration.framework */; };
 		7862FF081F3996C300459E3E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7862FF071F3996C300459E3E /* libc++.tbd */; };
@@ -18,11 +17,12 @@
 		7862FF101F3996E600459E3E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7862FF0F1F3996E600459E3E /* CoreText.framework */; };
 		7862FF121F3996F000459E3E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7862FF111F3996F000459E3E /* CoreGraphics.framework */; };
 		7862FF141F39971000459E3E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7862FF131F39971000459E3E /* CoreMotion.framework */; };
+		788D3D2E1FDFC7F5002121B6 /* YDSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 788D3D2D1FDFC7F5002121B6 /* YDSDK.bundle */; };
+		788D3D2F1FDFC8EC002121B6 /* YDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D3C7E1FDFBF9E002121B6 /* YDSDK.framework */; };
 		78A3FD561F2EC3DD00B70A90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A3FD551F2EC3DD00B70A90 /* main.m */; };
 		78A3FD591F2EC3DD00B70A90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A3FD581F2EC3DD00B70A90 /* AppDelegate.m */; };
 		78A3FD5C1F2EC3DD00B70A90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A3FD5B1F2EC3DD00B70A90 /* ViewController.m */; };
 		78A3FD611F2EC3DD00B70A90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A3FD601F2EC3DD00B70A90 /* Assets.xcassets */; };
-		78A3FDD81F2F010700B70A90 /* GYSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A3FDD71F2F010700B70A90 /* GYSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		78338C081F399FB200094F15 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		784906E91F34281D0039C935 /* GYSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GYSDK.bundle; sourceTree = "<group>"; };
 		7862FF031F39959C00459E3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7862FF051F3996B700459E3E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7862FF071F3996C300459E3E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -50,6 +49,8 @@
 		7862FF0F1F3996E600459E3E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7862FF111F3996F000459E3E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7862FF131F39971000459E3E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		788D3C7E1FDFBF9E002121B6 /* YDSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YDSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D3D2D1FDFC7F5002121B6 /* YDSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YDSDK.bundle; sourceTree = "<group>"; };
 		78A3FD511F2EC3DD00B70A90 /* GYSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A3FD551F2EC3DD00B70A90 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		78A3FD571F2EC3DD00B70A90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				788D3D2F1FDFC8EC002121B6 /* YDSDK.framework in Frameworks */,
 				78338C091F399FB200094F15 /* libsqlite3.0.tbd in Frameworks */,
 				7862FF141F39971000459E3E /* CoreMotion.framework in Frameworks */,
 				7862FF121F3996F000459E3E /* CoreGraphics.framework in Frameworks */,
@@ -76,7 +78,6 @@
 				7862FF081F3996C300459E3E /* libc++.tbd in Frameworks */,
 				7862FF061F3996B700459E3E /* SystemConfiguration.framework in Frameworks */,
 				7862FF041F39959C00459E3E /* CFNetwork.framework in Frameworks */,
-				78A3FDD81F2F010700B70A90 /* GYSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +118,7 @@
 		78A3FD541F2EC3DD00B70A90 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				784906E91F34281D0039C935 /* GYSDK.bundle */,
+				788D3D2D1FDFC7F5002121B6 /* YDSDK.bundle */,
 				78A3FD551F2EC3DD00B70A90 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -126,6 +127,7 @@
 		78A3FDD61F2F010700B70A90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				788D3C7E1FDFBF9E002121B6 /* YDSDK.framework */,
 				78338C081F399FB200094F15 /* libsqlite3.0.tbd */,
 				7862FF131F39971000459E3E /* CoreMotion.framework */,
 				7862FF111F3996F000459E3E /* CoreGraphics.framework */,
@@ -201,8 +203,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				784906EA1F34281D0039C935 /* GYSDK.bundle in Resources */,
 				78A3FD611F2EC3DD00B70A90 /* Assets.xcassets in Resources */,
+				788D3D2E1FDFC7F5002121B6 /* YDSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +346,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gy.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yd.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -369,7 +371,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gy.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yd.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

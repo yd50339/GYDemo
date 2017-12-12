@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:GYSDKDemo/GYSDKDemo.xcodeproj">
+      location = "group:YDSDK/YDSDK.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:GYSDK/GYSDK.xcodeproj">
+      location = "group:GYSDKDemo/GYSDKDemo.xcodeproj">
    </FileRef>
 </Workspace>

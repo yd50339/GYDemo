@@ -1,13 +1,13 @@
 //
 //  ViewController.m
-//  GYSDKDemo
+//  YDSDKDemo
 //
 //  Created by yd on 2017/7/31.
 //  Copyright © 2017年 yd. All rights reserved.
 //
 
 #import "ViewController.h"
-@import GYSDK;
+@import YDSDK;
 
 @interface ViewController ()
 @end
@@ -57,9 +57,9 @@
 
 - (void)loginBtnOnClick
 {
-    if (![GYSDK isLogin])
+    if (![YDSDK isLogin])
     {
-        [GYSDK gyLogin:^(NSDictionary *result)
+        [YDSDK YDLogin:^(NSDictionary *result)
         {
             NSLog(@"%@",result);
         }];
@@ -69,7 +69,7 @@
 
 - (void)payBtnOnClick
 {
-    [GYSDK gyPay:@{@"name":@"商品",
+    [YDSDK YDPay:@{@"name":@"商品",
                    @"price":@"0.01",
                    @"orderId":@"11111123123"}];
 
@@ -77,7 +77,7 @@
 
 - (void)logOutBtnOnClick
 {
-    [GYSDK logout];
+    [YDSDK logout];
 }
 
 

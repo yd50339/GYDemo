@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  GYSDKDemo
+//  YDSDKDemo
 //
 //  Created by yd on 2017/7/31.
 //  Copyright © 2017年 yd. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-@import GYSDK;
+@import YDSDK;
 
 @interface AppDelegate ()
 
@@ -24,7 +24,7 @@
     ViewController * vc  = [[ViewController alloc]init];
     self.window.rootViewController = vc;
   
-    [GYSDK registerApp:@"wx1b60b28c4f8d8908"];
+    [YDSDK registerApp:@"wx1b60b28c4f8d8908"];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -62,7 +62,7 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return [GYSDK application:application
+    return [YDSDK application:application
                       openURL:url
             sourceApplication:sourceApplication
                    annotation:annotation];
@@ -73,7 +73,7 @@
             openURL:(NSURL *)url
             options:(NSDictionary<NSString*, id> *)options
 {
-    return [GYSDK application:app openURL:url options:options];
+    return [YDSDK application:app openURL:url options:options];
 }
 
 @end
