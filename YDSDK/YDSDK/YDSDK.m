@@ -13,6 +13,7 @@
 #import "YDAlipay.h"
 #import "YDWXPay.h"
 #import "YDCusNavigationController.h"
+#import "YDIAPHelper.h"
 
 
 @implementation YDSDK
@@ -33,6 +34,8 @@
 
 + (void)logout
 {
+    [[YDIAPHelper iapHelper] requestProductWithId:@"com.youda.lexiusanzhangpai.gold6"];
+    return;
     NSString * bundleId =  [[NSBundle mainBundle]bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:bundleId];
     [[NSUserDefaults standardUserDefaults] synchronize];

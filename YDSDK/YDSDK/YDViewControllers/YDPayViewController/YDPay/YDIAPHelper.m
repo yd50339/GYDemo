@@ -111,6 +111,7 @@
     NSArray *myProductArray = response.products;
     if (myProductArray.count > 0) {
         myProduct = [myProductArray objectAtIndex:0];
+        [self purchaseProduct:myProduct];
         [_delegate receiveProduct:myProduct];
     } else {
         NSLog(@"无法获取产品信息，购买失败。");
